@@ -106,6 +106,27 @@ const Orangebox = styled.div`
   line-height: normal;
 `;
 
+const Breakthrough = styled.div`
+  position: relative;
+
+  top: 80px;
+  left: 150px;
+`;
+
+const Frame = styled.div`
+  position: relative;
+
+  top: -200px;
+  left: 600px;
+`;
+
+const Light = styled.div`
+  position: relative;
+
+  top: -300px;
+  left: 150px;
+`;
+
 const PreMain = () => {
   const navigate = useNavigate();
 
@@ -170,6 +191,29 @@ const PreMain = () => {
         ))}
       </DotsContainer>
       <Orangebox>알고 싶은 만큼 질문해주세요. 자세히 알려드립니다.</Orangebox>
+      <Breakthrough>
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/breakthrough.png`}
+          alt="breakthrough"
+          width="380px"
+        />
+      </Breakthrough>
+      <Frame>
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/Frame 52.png`}
+          alt="frame"
+          width="600px"
+          height="500px"
+        />
+      </Frame>
+      <Light>
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/light.png`}
+          alt="frame"
+          width="350px"
+          height="280px"
+        />
+      </Light>
     </Container>
   );
 };
