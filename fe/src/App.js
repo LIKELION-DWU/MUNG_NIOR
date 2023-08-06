@@ -4,7 +4,7 @@ import Styled from "styled-components";
 import JoinChoice from "./pages/semin/JoinChoice";
 import PreMain from "./pages/semin/PreMain";
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <div>
@@ -16,6 +16,6 @@ const App = () => {
       </div>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
