@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Styled from "styled-components";
+//semin
 import JoinChoice from "./pages/semin/JoinChoice";
 import PreMain from "./pages/semin/PreMain";
+//minwoo
+import Answer from "./pages/minwoo/respond/answer";
 
 function App() {
   return (
@@ -10,8 +13,12 @@ function App() {
       <div>
         <Styled />
         <Routes>
-          <Route path="/" element={<JoinChoice />} />
-          <Route path="/PreMain" element={<PreMain />} />
+          {/* 세민 경로 */}
+          {/* <Route path="/" element={<JoinChoice />} />
+          <Route path="/PreMain" element={<PreMain />} /> */}
+          {/* 민우경로 */}
+          {/* <Route path="/Answer" element={<Answer />} /> */}
+          <Route path="/" element={<Answer />} />
         </Routes>
       </div>
     </BrowserRouter>
