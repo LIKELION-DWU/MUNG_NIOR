@@ -18,6 +18,7 @@ const Container = styled.div`
 
 const Logo = styled.div`
   position: relative;
+  width: 50px;
   margin-top: 60px;
   margin-left: 60px;
   z-index: 999;
@@ -63,6 +64,7 @@ const DotsContainer = styled.div`
   position: relative;
   display: flex;
   margin-left: auto;
+  top: -5px;
 `;
 
 const Dots = styled.div`
@@ -78,7 +80,8 @@ const Dots = styled.div`
   border-radius: 50%;
   background-color: white;
   margin-right: 10px;
-  background-color: ${({ active }) => (active ? "white" : "gray")};
+  background-color: ${({ active }) =>
+    active ? "white" : "rgba(255, 255, 255, 0.5)"};
 `;
 
 const Orangebox = styled.div`
@@ -88,11 +91,12 @@ const Orangebox = styled.div`
   align-items: center;
 
   width: 800px;
-  height: 80px;
+  height: 83px;
   flex-shrink: 0;
 
   left: 481px;
-  top: -25px;
+  top: -60px;
+  margin-bottom: 70px;
 
   border-radius: 150px 0px 0px 10px;
   background: #ff6d2e;
@@ -110,21 +114,73 @@ const Breakthrough = styled.div`
   position: relative;
 
   top: 80px;
-  left: 150px;
+  left: 130px;
 `;
 
 const Frame = styled.div`
   position: relative;
 
   top: -200px;
-  left: 600px;
+  left: 530px;
 `;
 
 const Light = styled.div`
   position: relative;
 
-  top: -300px;
-  left: 150px;
+  top: -400px;
+  left: 130px;
+`;
+
+const RectangleK = styled.div`
+  position: relative;
+
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: -200px;
+
+  width: 1150px;
+  height: 280px;
+
+  border-radius: 109.119px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 2px rgba(0, 0, 0, 0.15);
+
+  img + img {
+    margin-left: 40px;
+  }
+
+  z-index: 100;
+`;
+
+const RectangleGray = styled.div`
+  position: relative;
+  top: -150px;
+
+  width: 1280px;
+  height: 1400px;
+
+  border-radius: 0px 150px 0px 0px;
+  background: linear-gradient(
+    180deg,
+    rgba(186, 186, 186, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  img {
+    position: relative;
+    top: 370px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+  img + img {
+    margin-top: 60px;
+  }
 `;
 
 const PreMain = () => {
@@ -202,18 +258,52 @@ const PreMain = () => {
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/Frame 52.png`}
           alt="frame"
-          width="600px"
-          height="500px"
+          width="670px"
+          height="620px"
         />
       </Frame>
       <Light>
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/light.png`}
-          alt="frame"
+          alt="light"
           width="350px"
           height="280px"
         />
       </Light>
+      <RectangleK>
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/kioskimg.png`}
+          alt="kioskimg"
+          width="650px"
+          height="130px"
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/kioskATM.png`}
+          alt="kioskATM"
+          width="230px"
+          height="150px"
+        />
+      </RectangleK>
+      <RectangleGray>
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/answertext.png`}
+          alt="answertext"
+          width="480px"
+          height="130px"
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/howto.png`}
+          alt="howto"
+          width="150px"
+          height="50px"
+        />
+        <img
+          src={`${process.env.PUBLIC_URL}/images_semin/howtoDetail.png`}
+          alt="howtoDetail"
+          width="700px"
+          height="700px"
+        />
+      </RectangleGray>
     </Container>
   );
 };
