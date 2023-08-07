@@ -6,6 +6,7 @@ import JoinChoice from "./pages/semin/JoinChoice";
 import PreMain from "./pages/semin/PreMain";
 //minwoo
 import Answer from "./pages/minwoo/respond/answer";
+import ResMy from "./pages/minwoo/respond/myPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* 민우경로 */}
           {/* <Route path="/Answer" element={<Answer />} /> */}
           <Route path="/" element={<Answer />} />
+          <Route path="/resMy" element={<ResMy />} />
         </Routes>
       </div>
     </BrowserRouter>

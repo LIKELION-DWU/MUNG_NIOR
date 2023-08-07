@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -18,6 +19,8 @@ const Container = styled.div`
 // 상단바
 const Logo = styled.div`
   position: relative;
+
+  width: 50px;
   margin-top: 60px;
   margin-left: 60px;
   z-index: 999;
@@ -112,7 +115,6 @@ const NextBtn = styled.button`
   background-color: transparent;
   border: none;
 `;
-
 const List = () => {
   return (
     <WhiteBox>
@@ -136,21 +138,28 @@ const List = () => {
   );
 };
 
-const answer = () => {
+//페이지 함수
+const Answer = () => {
+  const navigate = useNavigate();
+
+  const GoMy = () => {
+    navigate("/resMy");
+  };
+
   return (
     <Container>
       <Logo>
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/logo.png`}
           alt="logo"
-          width="150px"
+          style={{ width: "150px" }}
         />
       </Logo>
 
       <MenuContainer>
         <Menu>답변하기</Menu>
         <Menu>로그인</Menu>
-        <Menu>나의 기록</Menu>
+        <Menu onClick={GoMy}>나의 기록</Menu>
       </MenuContainer>
 
       <ListContainer>
@@ -161,4 +170,4 @@ const answer = () => {
   );
 };
 
-export default answer;
+export default Answer;
