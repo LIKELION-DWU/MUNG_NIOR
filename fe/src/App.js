@@ -4,6 +4,9 @@ import Styled from "styled-components";
 //semin
 import JoinChoice from "./pages/semin/JoinChoice";
 import PreMain from "./pages/semin/PreMain";
+import JoinQ1 from "./pages/semin/JoinQ1";
+import JoinQ2 from "./pages/semin/JoinQ2";
+import JoinComplete from "./pages/semin/JoinComplete";
 //minwoo
 import Answer from "./pages/minwoo/respond/answer";
 
@@ -14,11 +17,13 @@ function App() {
         <Styled />
         <Routes>
           {/* 세민 경로 */}
-          {/* <Route path="/" element={<JoinChoice />} />
-          <Route path="/PreMain" element={<PreMain />} /> */}
+          {/* <Route path="/JoinChoice" element={<JoinChoice />} />
+          <Route path="/" element={<PreMain />} />
+          <Route path="/JoinQ1" element={<JoinQ1 />} />
+          <Route path="/JoinQ2" element={<JoinQ2 />} />
+          <Route path="/JoinComplete" element={<JoinComplete />} /> */}
           {/* 민우경로 */}
           {/* <Route path="/Answer" element={<Answer />} /> */}
-          <Route path="/" element={<Answer />} />
         </Routes>
       </div>
     </BrowserRouter>
