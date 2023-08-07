@@ -9,6 +9,7 @@ import JoinQ2 from "./pages/semin/JoinQ2";
 import JoinComplete from "./pages/semin/JoinComplete";
 //minwoo
 import Answer from "./pages/minwoo/respond/answer";
+import ResMy from "./pages/minwoo/respond/myPage";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path="/JoinComplete" element={<JoinComplete />} /> */}
           {/* 민우경로 */}
           {/* <Route path="/Answer" element={<Answer />} /> */}
+          {/* <Route path="/" element={<Answer />} />
+          <Route path="/resMy" element={<ResMy />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
