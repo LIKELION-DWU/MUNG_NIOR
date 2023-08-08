@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -40,7 +41,7 @@ const Menu = styled.div`
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
@@ -50,7 +51,19 @@ const Menu = styled.div`
   }
 `;
 
-const lookAnswer = () => {
+const LookAnswer = () => {
+  const navigate = useNavigate();
+
+  const LookAnswer = () => {
+    navigate("/LookAnswer");
+  };
+  const Logout = () => {
+    navigate();
+  };
+  const MyPage = () => {
+    navigate("/QuestMy");
+  };
+
   return (
     <Container>
       <Logo>
@@ -62,12 +75,14 @@ const lookAnswer = () => {
       </Logo>
       <MenuContainer>
         <Menu>질문하기</Menu>
-        <Menu style={{ textDecorationLine: "underline" }}>답변보기</Menu>
+        <Menu onClick={LookAnswer} style={{ textDecorationLine: "underline" }}>
+          답변보기
+        </Menu>
         <Menu>로그아웃</Menu>
-        <Menu>나의 기록</Menu>
+        <Menu onClick={MyPage}>나의 기록</Menu>
       </MenuContainer>
     </Container>
   );
 };
 
-export default lookAnswer;
+export default LookAnswer;
