@@ -143,7 +143,11 @@ const Answer = () => {
   const navigate = useNavigate();
 
   const GoMy = () => {
-    navigate("/resMy");
+    navigate("/ResMy");
+  };
+
+  const GoAnswer = () => {
+    navigate("/Answer");
   };
 
   return (
@@ -157,8 +161,10 @@ const Answer = () => {
       </Logo>
 
       <MenuContainer>
-        <Menu>답변하기</Menu>
-        <Menu>로그인</Menu>
+        <Menu onClick={GoAnswer} style={{ textDecorationLine: "underline" }}>
+          답변하기
+        </Menu>
+        <Menu>로그아웃</Menu>
         <Menu onClick={GoMy}>나의 기록</Menu>
       </MenuContainer>
 

@@ -7,9 +7,15 @@ import PreMain from "./pages/semin/PreMain";
 import JoinQ1 from "./pages/semin/JoinQ1";
 import JoinQ2 from "./pages/semin/JoinQ2";
 import JoinComplete from "./pages/semin/JoinComplete";
-//minwoo
+//minwoo_답변자
 import Answer from "./pages/minwoo/respond/answer";
 import ResMy from "./pages/minwoo/respond/myPage";
+import Record from "./pages/minwoo/respond/record";
+//minwoo_작성자
+import QuestMy from "./pages/minwoo/question/myPage";
+import LookAnswer from "./pages/minwoo/question/lookAnswer";
+import Question from "./pages/minwoo/question/question";
+import Waiting from "./pages/minwoo/question/waiting";
 
 function App() {
   return (
@@ -24,9 +30,13 @@ function App() {
           <Route path="/JoinQ2" element={<JoinQ2 />} />
           <Route path="/JoinComplete" element={<JoinComplete />} /> */}
           {/* 민우경로 */}
-          {/* <Route path="/Answer" element={<Answer />} /> */}
-          {/* <Route path="/" element={<Answer />} />
-          <Route path="/resMy" element={<ResMy />} /> */}
+          {/* <Route path="/Answer" element={<Answer />} />
+          <Route path="/ResMy" element={<ResMy />} />
+          <Route path="/Record" element={<Record />} />
+          <Route path="/QuestMy" element={<QuestMy />} />
+          <Route path="/LookAnswer" element={<LookAnswer />} />
+          <Route path="/" element={<Question />} />
+          <Route path="/Waiting" element={<Waiting />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+
 import { useNavigate } from "react-router-dom";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const Container = styled.div`
   position: relative;
@@ -54,7 +57,7 @@ const Menu = styled.div`
 //메인
 const MainContainer = styled.div`
   width: 1280px;
-  height: 480px;
+  height: 450px;
 
   margin-top: 70px;
   padding-top: 20px;
@@ -62,15 +65,27 @@ const MainContainer = styled.div`
   border-radius: 0px 150px 0px 0px;
   background: linear-gradient(
     180deg,
-    rgba(186, 186, 186, 0.2) 0%,
+    rgba(176, 173, 173, 0.2) 0%,
     rgba(0, 0, 0, 0) 100%
   );
 `;
 
 const MainUser = () => {
-  const UserBox = styled.div`
-    background: #00ff22;
+  const percentage = 2;
 
+  const progressBarStyles = {
+    path: {
+      stroke: `#FF6D2E`, // 프로그래스 바 채우는 부분의 색상
+    },
+    trail: {
+      stroke: "#D9D9D9", // 프로그래스 바의 빈 부분의 색상
+    },
+    background: {
+      fill: "#fff", // 배경색
+    },
+  };
+
+  const UserBox = styled.div`
     width: 300px;
     height: 300px;
 
@@ -79,6 +94,8 @@ const MainUser = () => {
   `;
   //답변자 이름 받아오는 부분
   const UserName = styled.div`
+    margin-top: 30px;
+
     color: #404040;
     text-align: center;
     font-family: Noto Sans KR;
@@ -90,7 +107,17 @@ const MainUser = () => {
 
   return (
     <UserBox>
-      <img src="./images_minwoo/user.png" alt="사용자" width="290px" />
+      <CircularProgressbarWithChildren
+        value={percentage}
+        styles={progressBarStyles}
+        strokeWidth={6}
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/images_minwoo/user.png`}
+          alt="사용자"
+          width="290px"
+        />
+      </CircularProgressbarWithChildren>
       <UserName>유새연</UserName>
       <div
         style={{
@@ -108,6 +135,7 @@ const MainUser = () => {
     </UserBox>
   );
 };
+
 const MainTitle = styled.div`
   position: relative;
 
@@ -124,23 +152,40 @@ const MainTitle = styled.div`
   line-height: normal;
 `;
 const MainListBox = styled.div`
-  background: #008870;
-  width: 650px;
-  height: 260px;
+  overflow: auto;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  width: 700px;
+  height: 250px;
 
   margin-left: 470px;
   padding: 20px;
-  padding-top: 36px;
+  padding-top: 20px;
 `;
+
 const List = () => {
+  const navigate = useNavigate();
+
+  const GoRecord = () => {
+    console.log("go");
+    navigate("/record");
+  };
+
   const ListWhite = styled.div`
-    width: 590px;
-    height: 42px;
+    position: relative;
 
-    padding: 10px;
+    width: 630px;
+    height: 48px;
+
+    padding-top: 15px;
     padding-left: 26px;
+    margin-top: 20px;
 
-    border-radius: 35px;
+    border-radius: 20px;
     background: #fff;
   `;
   const ListContent = styled.div`
@@ -151,11 +196,22 @@ const List = () => {
     font-weight: 500;
     line-height: normal;
   `;
+  const ListBtn = styled.img`
+    position: absolute;
+
+    width: 130px;
+
+    bottom: -12px;
+    right: -38px;
+  `;
 
   return (
     <ListWhite>
       <ListContent>앱의 권한 허용을</ListContent>
-      <img src="./images_minwoo/next.png" alt="기릿" width="130px" />
+      <ListBtn
+        onClick={GoRecord}
+        src={`${process.env.PUBLIC_URL}/images_minwoo/next.png`}
+      ></ListBtn>
     </ListWhite>
   );
 };
@@ -166,7 +222,7 @@ const MoreBtn = styled.button`
   height: 60px;
 
   margin-left: 750px;
-  margin-top: -50px;
+  margin-top: -30px;
 
   border: none;
   border-radius: 20px;
@@ -185,7 +241,11 @@ const ResMy = () => {
   const navigate = useNavigate();
 
   const GoMy = () => {
-    navigate("/resMy");
+    navigate("/ResMy");
+  };
+
+  const GoAnswer = () => {
+    navigate("/Answer");
   };
 
   return (
@@ -197,17 +257,19 @@ const ResMy = () => {
           width="150px"
         />
       </Logo>
-
       <MenuContainer>
-        <Menu>답변하기</Menu>
-        <Menu>로그인</Menu>
-        <Menu onClick={GoMy}>나의 기록</Menu>
+        <Menu onClick={GoAnswer}>답변하기</Menu>
+        <Menu>로그아웃</Menu>
+        <Menu onClick={GoMy} style={{ textDecorationLine: "underline" }}>
+          나의 기록
+        </Menu>
       </MenuContainer>
-
       <MainContainer>
         <MainUser />
         <MainTitle>답변을 기록합니다()</MainTitle>
         <MainListBox>
+          <List />
+          <List />
           <List />
         </MainListBox>
       </MainContainer>
