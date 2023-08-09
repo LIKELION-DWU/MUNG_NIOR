@@ -118,7 +118,7 @@ const MainUser = () => {
           width="290px"
         />
       </CircularProgressbarWithChildren>
-      <UserName>유새연</UserName>
+      <UserName>장우림</UserName>
       <div
         style={{
           color: "#404040",
@@ -172,7 +172,7 @@ const List = () => {
 
   const GoRecord = () => {
     console.log("go");
-    navigate("/record");
+    navigate("/LookAnswer");
   };
 
   const ListWhite = styled.div`
@@ -228,6 +228,9 @@ const QuestMy = () => {
   const MyPage = () => {
     navigate("/QuestMy");
   };
+  const GoQuestion = () => {
+    navigate("/");
+  };
 
   return (
     <Container>
@@ -239,7 +242,7 @@ const QuestMy = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu>질문하기</Menu>
+        <Menu onClick={GoQuestion}>질문하기</Menu>
         <Menu onClick={LookAnswer}>답변보기</Menu>
         <Menu>로그아웃</Menu>
         <Menu onClick={MyPage} style={{ textDecorationLine: "underline" }}>
