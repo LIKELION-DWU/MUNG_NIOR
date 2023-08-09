@@ -7,6 +7,7 @@ import PreMain from "./pages/semin/PreMain";
 import JoinQ1 from "./pages/semin/JoinQ1";
 import JoinQ2 from "./pages/semin/JoinQ2";
 import JoinComplete from "./pages/semin/JoinComplete";
+import JoinR from "./pages/semin/JoinR";
 //minwoo_답변자
 import Answer from "./pages/minwoo/respond/answer";
 import ResMy from "./pages/minwoo/respond/myPage";
@@ -24,11 +25,12 @@ function App() {
         <Styled />
         <Routes>
           {/* 세민 경로 */}
-          {/* <Route path="/JoinChoice" element={<JoinChoice />} />
+          <Route path="/JoinChoice" element={<JoinChoice />} />
           <Route path="/" element={<PreMain />} />
           <Route path="/JoinQ1" element={<JoinQ1 />} />
           <Route path="/JoinQ2" element={<JoinQ2 />} />
-          <Route path="/JoinComplete" element={<JoinComplete />} /> */}
+          <Route path="/JoinComplete" element={<JoinComplete />} />
+          <Route path="/JoinR" element={<JoinR />} />
           {/* 민우경로_답변자 */}
           {/* <Route path="/Answer" element={<Answer />} />
           <Route path="/ResMy" element={<ResMy />} />

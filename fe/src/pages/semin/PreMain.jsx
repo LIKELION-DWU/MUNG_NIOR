@@ -186,6 +186,7 @@ const RectangleGray = styled.div`
 const PreMain = () => {
   const navigate = useNavigate();
 
+  // 이미지 전환 코드 ~
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -205,7 +206,7 @@ const PreMain = () => {
   };
 
   useEffect(() => {
-    const slideshowInterval = setInterval(changeImage, 3500); // 3.5초마다 이미지 변경
+    const slideshowInterval = setInterval(changeImage, 3500);
 
     return () => clearInterval(slideshowInterval);
   }, []);
@@ -213,6 +214,7 @@ const PreMain = () => {
   useEffect(() => {
     setSelectedImageIndex(currentIndex);
   }, [currentIndex]);
+  // ~ 이미지 전환 코드
 
   return (
     <Container>
