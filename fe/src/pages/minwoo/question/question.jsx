@@ -76,7 +76,6 @@ const PlateImg = styled.img`
   margin-left: 200px;
 `;
 const TextInput = styled.div`
-  background: #00ff22;
   width: 330px;
   height: 330px;
 
@@ -92,6 +91,15 @@ const TextInput = styled.div`
   line-height: normal;
 `;
 
+const SendBtn = styled.img`
+  position: fixed;
+  width: 20%;
+
+  bottom: 557px;
+  right: 0;
+  transform: translate(0, 100%);
+`;
+
 const Question = () => {
   const navigate = useNavigate();
 
@@ -103,6 +111,9 @@ const Question = () => {
   };
   const MyPage = () => {
     navigate("/QuestMy");
+  };
+  const GoWaiting = () => {
+    navigate("/Waiting");
   };
 
   return (
@@ -136,6 +147,11 @@ const Question = () => {
         <br />
         시작합니다.
       </TextInput>
+
+      <SendBtn
+        onClick={GoWaiting}
+        src={`${process.env.PUBLIC_URL}/images_minwoo/sendBtn.png`}
+      ></SendBtn>
     </Container>
   );
 };
