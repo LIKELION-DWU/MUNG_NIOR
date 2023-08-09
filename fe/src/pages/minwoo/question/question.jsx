@@ -22,17 +22,24 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
-  position: relative;
+  position: fixed;
   width: 50px;
   margin-top: 60px;
   margin-left: 60px;
   z-index: 999;
 `;
-
+// background: rgba(255, 255, 255, 0.78);
 const MenuContainer = styled.div`
-  position: relative;
-  margin-top: -60px;
-  margin-left: 300px;
+  background: rgba(255, 255, 255, 0.78);
+  width: 1020px;
+  height: 85px;
+
+  position: fixed;
+
+  top: 3px;
+
+  padding-top: 40px;
+  margin-left: 260px;
 
   line-height: 1;
 `;
@@ -59,7 +66,7 @@ const Menu = styled.div`
 const Div = styled.div`
   height: 40px;
 
-  margin-top: 70px;
+  margin-top: 160px;
 
   color: #ff6d2e;
   text-align: center;
@@ -93,11 +100,10 @@ const TextInput = styled.div`
 
 const SendBtn = styled.img`
   position: fixed;
-  width: 20%;
+  width: 300px;
 
-  bottom: 557px;
-  right: 0;
-  transform: translate(0, 100%);
+  margin-top: -160px;
+  margin-left: 985px;
 `;
 
 const Question = () => {
@@ -138,6 +144,7 @@ const Question = () => {
 
       <PlateImg
         src={`${process.env.PUBLIC_URL}/images_minwoo/plate.png`}
+        alt="접시"
       ></PlateImg>
 
       <TextInput>
