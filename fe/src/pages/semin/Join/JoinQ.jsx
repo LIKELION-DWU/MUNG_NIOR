@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -59,7 +60,7 @@ const Menu = styled.div`
 
 const Name = styled.div`
   position: relative;
-  top: 150px;
+  top: 90px;
   text-align: center;
 `;
 
@@ -70,10 +71,46 @@ const NameInput = styled.input`
   align-items: center;
   margin: auto;
 
-  top: 210px;
+  top: 120px;
 
-  width: 700px;
-  height: 130px;
+  width: 670px;
+  height: 110px;
+
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+  border: none;
+  color: #000;
+  font-family: Pretendard;
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Phone = styled.div`
+  position: relative;
+  top: 150px;
+  text-align: center;
+`;
+
+const PhoneInput = styled.input`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  top: 180px;
+
+  width: 670px;
+  height: 110px;
 
   border-radius: 30px;
   background: #fff;
@@ -95,16 +132,37 @@ const NameInput = styled.input`
 
 const Nextbtn = styled.div`
   position: relative;
-  top: 308px;
+  top: 150px;
   left: 1120px;
   cursor: pointer;
 `;
 
 const JoinQ1 = () => {
-  const [name, setName] = useState("");
+  const navigate = useNavigate();
+  const gotoJoinChoice = () => {
+    navigate("/JoinChoice");
+  };
+  const gotoLoginQ = () => {
+    navigate("/LoginQ");
+  };
+  const gotoJoinComplete = () => {
+    navigate("/JoinComplete");
+  };
+  const handleNextBtnClick = () => {
+    if (nameQ.trim() === "" || phoneQ.trim() === "") {
+      alert("필수 정보를 모두 입력해주세요.");
+    } else {
+      gotoJoinComplete();
+    }
+  };
 
-  const handleName = (event) => {
-    setName(event.target.value);
+  const [nameQ, setNameQ] = useState("");
+  const handleNameQ = (event) => {
+    setNameQ(event.target.value);
+  };
+  const [phoneQ, setPhoneQ] = useState("");
+  const handlePhoneQ = (event) => {
+    setPhoneQ(event.target.value);
   };
 
   return (
@@ -119,8 +177,10 @@ const JoinQ1 = () => {
       <MenuContainer>
         <Menu>질문</Menu>
         <Menu>답변</Menu>
-        <Menu>로그인</Menu>
-        <Menu className="join">회원가입</Menu>
+        <Menu onClick={gotoLoginQ}>로그인</Menu>
+        <Menu className="join" onClick={gotoJoinChoice}>
+          회원가입
+        </Menu>
       </MenuContainer>
       <Name>
         <span
@@ -157,12 +217,54 @@ const JoinQ1 = () => {
           무엇인가요?
         </span>
       </Name>
-      <NameInput type="text" value={name} onChange={handleName}></NameInput>
+      <NameInput type="text" value={nameQ} onChange={handleNameQ}></NameInput>
+      <Phone>
+        <span
+          style={{
+            color: "#000000",
+            fontSize: "50px",
+            fontWeight: "990",
+            fontFamily: "Pretendard",
+            fontStyle: "normal",
+          }}
+        >
+          2. 당신의{" "}
+        </span>
+        <span
+          style={{
+            color: "#FF6D2E",
+            fontSize: "50px",
+            fontWeight: "990",
+            fontFamily: "Pretendard",
+            fontStyle: "normal",
+          }}
+        >
+          전화번호는{" "}
+        </span>
+        <span
+          style={{
+            color: "#000000",
+            fontSize: "50px",
+            fontWeight: "990",
+            fontFamily: "Pretendard",
+            fontStyle: "normal",
+          }}
+        >
+          무엇인가요?
+        </span>
+      </Phone>
+      <PhoneInput
+        type="text"
+        value={phoneQ}
+        onChange={handlePhoneQ}
+        placeholder="010-0000-0000"
+      ></PhoneInput>
       <Nextbtn>
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/nextbtn.png`}
           alt="nextbtn"
           width="160px"
+          onClick={handleNextBtnClick}
         />
       </Nextbtn>
     </Container>

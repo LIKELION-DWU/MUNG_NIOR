@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -74,7 +75,7 @@ const InputQ = styled.div`
 
 const Name = InputQ;
 const Email = InputQ;
-const PassWord = InputQ;
+const Password = InputQ;
 const Phone = InputQ;
 
 const Input = styled.input`
@@ -83,7 +84,7 @@ const Input = styled.input`
   left: 610px;
   margin-top: 10px;
 
-  width: 420px;
+  width: 400px;
   height: 48px;
 
   border-radius: 13.536px;
@@ -105,18 +106,41 @@ const Input = styled.input`
 
 const NameInput = Input;
 const EmailInput = Input;
-const PassWordInput = Input;
+const PasswordInput = Input;
 const PhoneInput = Input;
 
 const Nextbtn = styled.div`
   position: relative;
-  top: -190px;
+  top: -180px;
   left: 1120px;
 
   cursor: pointer;
 `;
 
 const JoinR = () => {
+  const navigate = useNavigate();
+  const gotoJoinChoice = () => {
+    navigate("/JoinChoice");
+  };
+  const gotoLoginQ = () => {
+    navigate("/LoginQ");
+  };
+  const gotoJoinComplete = () => {
+    navigate("/JoinComplete");
+  };
+  const handleNextBtnClick = () => {
+    if (
+      nameR.trim() === "" ||
+      emailR.trim() === "" ||
+      passwordR.trim() === "" ||
+      phoneR.trim() === ""
+    ) {
+      alert("필수 정보를 모두 입력해주세요.");
+    } else {
+      gotoJoinComplete();
+    }
+  };
+
   const [nameR, setNameR] = useState("");
   const [emailR, setEmailR] = useState("");
   const [passwordR, setPasswordR] = useState("");
@@ -147,8 +171,10 @@ const JoinR = () => {
       <MenuContainer>
         <Menu>질문</Menu>
         <Menu>답변</Menu>
-        <Menu>로그인</Menu>
-        <Menu className="join">회원가입</Menu>
+        <Menu onClick={gotoLoginQ}>로그인</Menu>
+        <Menu className="join" onClick={gotoJoinChoice}>
+          회원가입
+        </Menu>
       </MenuContainer>
       <Light>
         <img
@@ -162,7 +188,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -173,7 +199,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#FF6D2E",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -184,7 +210,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -193,12 +219,12 @@ const JoinR = () => {
           은 무엇인가요?
         </span>
       </Name>
-      <NameInput></NameInput>
+      <NameInput type="text" value={nameR} onChange={handleNameR}></NameInput>
       <Email>
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -209,7 +235,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#FF6D2E",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -220,7 +246,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -229,12 +255,16 @@ const JoinR = () => {
           을 입력해주세요!
         </span>
       </Email>
-      <EmailInput></EmailInput>
-      <PassWord>
+      <EmailInput
+        type="text"
+        value={emailR}
+        onChange={handleEmailR}
+      ></EmailInput>
+      <Password>
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -245,7 +275,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#FF6D2E",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -256,7 +286,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -264,13 +294,17 @@ const JoinR = () => {
         >
           도 입력해주세요.
         </span>
-      </PassWord>
-      <PassWordInput></PassWordInput>
+      </Password>
+      <PasswordInput
+        type="password"
+        value={passwordR}
+        onChange={handlePasswordR}
+      ></PasswordInput>
       <Phone>
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -281,7 +315,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#FF6D2E",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -292,7 +326,7 @@ const JoinR = () => {
         <span
           style={{
             color: "#000000",
-            fontSize: "25px",
+            fontSize: "23px",
             fontWeight: "700",
             fontFamily: "Pretendard",
             fontStyle: "normal",
@@ -301,12 +335,17 @@ const JoinR = () => {
           을 입력해주세요.
         </span>
       </Phone>
-      <PhoneInput></PhoneInput>
+      <PhoneInput
+        type="text"
+        value={phoneR}
+        onChange={handlePhoneR}
+      ></PhoneInput>
       <Nextbtn>
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/nextbtn.png`}
           alt="nextbtn"
           width="160px"
+          onClick={handleNextBtnClick}
         />
       </Nextbtn>
     </Container>

@@ -27,7 +27,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 450px;
 
   line-height: 1;
 `;
@@ -36,12 +36,17 @@ const Menu = styled.div`
   position: relative;
   display: inline-block;
 
+  margin-left: 80px;
+
+  position: relative;
+  display: inline-block;
+
   margin-left: 90px;
 
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 40px;
   font-style: normal;
   font-weight: 800;
 
@@ -183,28 +188,34 @@ const RectangleGray = styled.div`
   }
 `;
 
-const PreMain = () => {
+const MainR = () => {
   const navigate = useNavigate();
+  const gotoPreMain = () => {
+    navigate("/");
+  };
 
-  // 이미지 전환 코드 ~
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // 점 클릭 -> 이미지
   const handleDotClick = (index) => {
     setSelectedImageIndex(index);
     setCurrentIndex(index);
   };
 
+  // 이미지 배열
   const images = [
     `${process.env.PUBLIC_URL}/images_semin/image1.png`,
     `${process.env.PUBLIC_URL}/images_semin/image2.png`,
     `${process.env.PUBLIC_URL}/images_semin/image3.png`,
   ];
 
+  // 이미지 바뀌기 -> 마지막 사진이면 처음으로
   const changeImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  // 3.5초마다 변경
   useEffect(() => {
     const slideshowInterval = setInterval(changeImage, 3500);
 
@@ -214,7 +225,6 @@ const PreMain = () => {
   useEffect(() => {
     setSelectedImageIndex(currentIndex);
   }, [currentIndex]);
-  // ~ 이미지 전환 코드
 
   return (
     <Container>
@@ -226,10 +236,9 @@ const PreMain = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu>질문</Menu>
-        <Menu>답변</Menu>
-        <Menu>로그인</Menu>
-        <Menu className="join">회원가입</Menu>
+        <Menu>답변하기</Menu>
+        <Menu onClick={gotoPreMain}>로그아웃</Menu>
+        <Menu>나의 기록</Menu>
       </MenuContainer>
       <Images>
         <img
@@ -310,4 +319,4 @@ const PreMain = () => {
   );
 };
 
-export default PreMain;
+export default MainR;

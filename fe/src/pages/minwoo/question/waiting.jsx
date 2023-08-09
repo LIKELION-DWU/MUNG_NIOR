@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { motion } from "framer-motion";
-import { useSpring, animated } from "react-spring";
+// import { motion } from "framer-motion";
+// import { useSpring, animated } from "react-spring";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
