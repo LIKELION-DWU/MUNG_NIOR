@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -82,6 +83,25 @@ const Complete = styled.div`
 `;
 
 const JoinComplete = () => {
+  const navigate = useNavigate();
+  const gotoJoinChoice = () => {
+    navigate("/JoinChoice");
+  };
+  const gotoLoginQ = () => {
+    navigate("/LoginQ");
+  };
+
+  // 일정 시간 후에 페이지 이동 함수 호출
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      gotoLoginQ();
+    }, 3500);
+
+    return () => {
+      clearTimeout(timeout); // 컴포넌트 언마운트 시 타임아웃 클리어
+    };
+  }, []);
+
   return (
     <Container>
       <Logo>
@@ -95,7 +115,9 @@ const JoinComplete = () => {
         <Menu>질문</Menu>
         <Menu>답변</Menu>
         <Menu>로그인</Menu>
-        <Menu className="join">회원가입</Menu>
+        <Menu className="join" onClick={gotoJoinChoice}>
+          회원가입
+        </Menu>
       </MenuContainer>
       <Complete>
         <img

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -79,14 +80,21 @@ const QA = styled.div`
   }
 `;
 
-const Nextbtn = styled.div`
-  position: relative;
-  top: 155px;
-  left: 1120px;
-  cursor: pointer;
-`;
-
 const JoinChoice = () => {
+  const navigate = useNavigate();
+  const gotoJoinChoice = () => {
+    navigate("/JoinChoice");
+  };
+  const gotoLoginQ = () => {
+    navigate("/LoginQ");
+  };
+  const gotoJoinQ = () => {
+    navigate("/JoinQ");
+  };
+  const gotoJoinR = () => {
+    navigate("/JoinR");
+  };
+
   return (
     <Container>
       <Logo>
@@ -99,8 +107,10 @@ const JoinChoice = () => {
       <MenuContainer>
         <Menu>질문</Menu>
         <Menu>답변</Menu>
-        <Menu>로그인</Menu>
-        <Menu className="join">회원가입</Menu>
+        <Menu onClick={gotoLoginQ}>로그인</Menu>
+        <Menu className="join" onClick={gotoJoinChoice}>
+          회원가입
+        </Menu>
       </MenuContainer>
       <Choice>
         <span
@@ -127,20 +137,15 @@ const JoinChoice = () => {
           src={`${process.env.PUBLIC_URL}/images_semin/q.png`}
           alt="q"
           width="310px"
+          onClick={gotoJoinQ}
         />
         <img
           src={`${process.env.PUBLIC_URL}/images_semin/a.png`}
           alt="a"
           width="310px"
+          onClick={gotoJoinR}
         />
       </QA>
-      <Nextbtn>
-        <img
-          src={`${process.env.PUBLIC_URL}/images_semin/nextbtn.png`}
-          alt="nextbtn"
-          width="160px"
-        />
-      </Nextbtn>
     </Container>
   );
 };
