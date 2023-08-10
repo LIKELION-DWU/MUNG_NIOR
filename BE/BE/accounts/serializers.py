@@ -7,8 +7,12 @@ User = get_user_model()
 class StudentSignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "phone_number", "password"]
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ["id", "username", "phone_number"]
+        extra_kwargs = {
+            "username": {"required": True},
+            "phone_number": {"required": True},
+            "password": {"write_only": True},
+        }
 
     def create(self, validated_data):
         validated_data["user_type"] = "student"
@@ -19,8 +23,13 @@ class StudentSignUpSerializer(serializers.ModelSerializer):
 class TeacherSignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "email", "phone_number", "password"]
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ["id", "username", "email", "phone_number"]
+        extra_kwargs = {
+            "username": {"required": True},
+            "email": {"required": True},
+            "phone_number": {"required": True},
+            # "password": {"write_only": True},
+        }
 
     def create(self, validated_data):
         validated_data["user_type"] = "teacher"
