@@ -77,6 +77,12 @@ REST_FRAMEWORK = {
     ],
 }
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",  # 기본 인증 백엔드
+]
+AUTH_USER_MODEL = "accounts.User"
+
+
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 # 나중에 고치기 url
 LOGIN_REDIRECT_URL = "http://127.0.0.1:8000"

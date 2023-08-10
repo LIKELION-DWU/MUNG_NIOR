@@ -1,22 +1,52 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 
 
-# 전화번호 '010-0000-0000'형식으로 하기로 함
-# 답변자
-class Teacher(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
-    password = models.CharField(max_length=128)
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=13)
+class CustomUserManager(BaseUserManager):
+    def create_user(self, user_type, **extra_fields):
+        if not extra_fields.get("name"):
+            raise ValueError("The Name field must be set")
+
+        user = self.model(user_type=user_type, **extra_fields)
+        user.set_password(extra_fields.get("password"))
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, user_type, **extra_fields):
+        user = self.create_user(user_type, **extra_fields)
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+
+class User(AbstractUser, PermissionsMixin):
+    USER_TYPES = (
+        ("student", "Student"),
+        ("teacher", "Teacher"),
+    )
+
+    user_type = models.CharField(max_length=10, choices=USER_TYPES)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True, blank=True, null=True)
+    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
+
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = "phone_number"
+    REQUIRED_FIELDS = ["user_type", "name"]
 
     def __str__(self):
-        return self.id
+        return self.name
 
+    def has_perm(self, perm, obj=None):
+        return True
 
-# 질문자
-class Student(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
-    phone = models.CharField(max_length=13)
+    def has_module_perms(self, app_label):
+        return True
 
-    def __str__(self):
-        return self.id
+    @property
+    def is_staff(self):
+        return self.is_admin
