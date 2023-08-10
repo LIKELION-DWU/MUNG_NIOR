@@ -1,103 +1,66 @@
-from django.shortcuts import render
+import urllib
+from django.shortcuts import render, redirect
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from rest_framework.authtoken.models import Token
 from rest_framework import status
-from .models import Teacher, Student
+from django.contrib.auth import authenticate, logout, login
 from .serializers import (
-    TeacherSignUpSerializer,
     StudentSignUpSerializer,
-    TeacherLoginSerializer,
-    StudentLoginSerializer,
+    TeacherSignUpSerializer,
+    UserLoginSerializer,
 )
 
-# Create your views here.
-from django.contrib.auth import authenticate, logout, login
-from django.shortcuts import redirect
-import urllib
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def student_signup(request):
+    serializer = StudentSignUpSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save(user_type="student")
+        user.set_password(user.phone_number)
+        user.save()
+        return Response(
+            {"message": "Student 회원가입이 완료되었습니다."}, status=status.HTTP_201_CREATED
+        )
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 답변자 ViewSet
-class TeacherSignUpView(APIView):
-    permission_classes = [AllowAny]  # 모든 사용자 접근가능(인증 없어도-Token없이 하는 방법인것 같아서 씀)
-
-    # 답변자 회원가입
-    def post(self, request):
-        serializer = TeacherSignUpSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "회원가입 성공"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    # 회원정보조회
-    def get(self, request):
-        teachers = Teacher.objects.all()  # 모든 답변자 정보 조회
-        serializer = TeacherSignUpSerializer(
-            teachers, many=True
-        )  # 여러 객체를 직렬화할 때는 many=True 옵션 사용
-        return Response(serializer.data, status=status.HTTP_200_OK)
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def teacher_signup(request):
+    serializer = TeacherSignUpSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save(user_type="teacher")
+        user.set_password(user.phone_number)
+        user.save()
+        return Response(
+            {"message": "Teacher 회원가입이 완료되었습니다."}, status=status.HTTP_201_CREATED
+        )
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class StudentSignUpView(APIView):
-    permission_classes = [AllowAny]
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def user_login(request):
+    serializer = UserLoginSerializer(data=request.data)
+    if serializer.is_valid():
+        user = authenticate(
+            username=serializer.validated_data["name"],
+            password=serializer.validated_data["phone_number"],
+        )
+        if user is not None:
+            login(request, user)
+            return Response(
+                {"message": f"{user.user_type.capitalize()} 로그인 되었습니다."},
+                status=status.HTTP_200_OK,
+            )
 
-    # 질문자 회원가입
-    def post(self, request):
-        serializer = StudentSignUpSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "회원가입 성공"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    # 회원정보조회
-    def get(self, request):
-        students = Student.objects.all()  # 모든 질문자 정보 조회
-        serializer = StudentSignUpSerializer(
-            students, many=True
-        )  # 여러 객체를 직렬화할 때는 many=True 옵션 사용
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-class TeacherLoginView(APIView):
-    def post(self, request):
-        serializer = TeacherLoginSerializer(data=request.data)
-        if serializer.is_valid():
-            email = serializer.validated_data["email"]
-            password = serializer.validated_data["password"]
-
-            user = authenticate(request, email=email, password=password)
-
-            if user is not None:
-                login(request, user)  # 로그인 처리
-                return Response({"message": "로그인 성공"}, status=status.HTTP_200_OK)
-            else:
-                return Response(
-                    {"message": "이메일 또는 비밀번호가 올바르지 않습니다."},
-                    status=status.HTTP_401_UNAUTHORIZED,
-                )
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class StudentLoginView(APIView):
-    def post(self, request):
-        serializer = StudentLoginSerializer(data=request.data)
-        if serializer.is_valid():
-            student_id = serializer.validated_data["id"]
-            phone = serializer.validated_data["phone"]
-
-            # Student 모델에서 학생 찾기
-            try:
-                student = Student.objects.get(id=student_id, phone=phone)
-                # 필요한 추가 작업 수행
-                return Response({"message": "로그인 성공"}, status=status.HTTP_200_OK)
-            except Student.DoesNotExist:
-                return Response(
-                    {"message": "학생 정보가 일치하지 않습니다."},
-                    status=status.HTTP_401_UNAUTHORIZED,
-                )
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(
+        {"message": "로그인 정보가 올바르지 않습니다."}, status=status.HTTP_401_UNAUTHORIZED
+    )
 
 
 class LogoutView(APIView):
