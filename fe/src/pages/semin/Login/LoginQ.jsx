@@ -27,7 +27,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 310px;
 
   line-height: 1;
 `;
@@ -36,12 +36,12 @@ const Menu = styled.div`
   position: relative;
   display: inline-block;
 
-  margin-left: 90px;
+  margin-left: 120px;
 
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
@@ -102,7 +102,7 @@ const Input = styled.input`
   border: none;
   color: #000;
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -128,7 +128,7 @@ const Loginbtn = styled.div`
   position: relative;
   cursor: pointer;
 
-  top: 180px;
+  top: 185px;
   left: 980px;
 `;
 
@@ -137,11 +137,11 @@ const LoginQ = () => {
   const gotoJoinChoice = () => {
     navigate("/JoinChoice");
   };
-  const gotoLoginQ = () => {
-    navigate("/gotoLoginQ");
-  };
   const gotoMainQ = () => {
     navigate("/MainQ");
+  };
+  const gotoLoginR = () => {
+    navigate("/LoginR");
   };
   const handleLoginBtnClick = () => {
     if (nameQ.trim() === "" || phoneQ.trim() === "") {
@@ -172,9 +172,7 @@ const LoginQ = () => {
       <MenuContainer>
         <Menu>질문</Menu>
         <Menu>답변</Menu>
-        <Menu className="login" onClick={gotoLoginQ}>
-          로그인
-        </Menu>
+        <Menu className="login">로그인</Menu>
         <Menu onClick={gotoJoinChoice}>회원가입</Menu>
       </MenuContainer>
       <Choice>
@@ -187,6 +185,7 @@ const LoginQ = () => {
           src={`${process.env.PUBLIC_URL}/images_semin/rwhite.png`}
           alt="rwhite"
           width="230px"
+          onClick={gotoLoginR}
         />
       </Choice>
       <InputQ>

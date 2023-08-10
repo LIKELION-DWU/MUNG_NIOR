@@ -27,7 +27,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 450px;
+  margin-left: 490px;
 
   line-height: 1;
 `;
@@ -36,17 +36,12 @@ const Menu = styled.div`
   position: relative;
   display: inline-block;
 
-  margin-left: 80px;
-
-  position: relative;
-  display: inline-block;
-
   margin-left: 90px;
 
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
