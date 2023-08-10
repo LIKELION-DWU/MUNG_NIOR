@@ -7,7 +7,7 @@ User = get_user_model()
 class StudentSignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "name", "phone_number", "password"]
+        fields = ["id", "username", "phone_number", "password"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -19,7 +19,7 @@ class StudentSignUpSerializer(serializers.ModelSerializer):
 class TeacherSignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "name", "email", "phone_number", "password"]
+        fields = ["id", "username", "email", "phone_number", "password"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -28,19 +28,19 @@ class TeacherSignUpSerializer(serializers.ModelSerializer):
         return user
 
 
-# 공통 로그인
+# 공통로그인
 class UserLoginSerializer(serializers.Serializer):
     user_type = serializers.CharField(max_length=10)
-    name = serializers.CharField(max_length=100)
     phone_number = serializers.CharField(max_length=15)
 
     def validate(self, data):
         user_type = data["user_type"]
-        name = data["name"]
         phone_number = data["phone_number"]
 
         user = authenticate(
-            username=name,
+            request=self.context.get("request"),
+            # username=self.context.get("request").data.get("username"),
+            username=phone_number,
             password=phone_number,
         )
 
