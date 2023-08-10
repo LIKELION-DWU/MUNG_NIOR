@@ -1,11 +1,13 @@
 from django.db import models
+
+# from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, user_type, **extra_fields):
-        if not extra_fields.get("name"):
-            raise ValueError("The Name field must be set")
+        if not extra_fields.get("phone_number"):
+            raise ValueError("The phonNumber field must be set")
 
         user = self.model(user_type=user_type, **extra_fields)
         user.set_password(extra_fields.get("password"))
@@ -26,7 +28,6 @@ class User(AbstractUser, PermissionsMixin):
     )
 
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
-    name = models.CharField(max_length=100)
     email = models.EmailField(unique=True, blank=True, null=True)
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
 
@@ -35,11 +36,11 @@ class User(AbstractUser, PermissionsMixin):
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = "phone_number"
-    REQUIRED_FIELDS = ["user_type", "name"]
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ["user_type", "phone_number"]
 
     def __str__(self):
-        return self.name
+        return self.username
 
     def has_perm(self, perm, obj=None):
         return True
@@ -50,3 +51,15 @@ class User(AbstractUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+# class CustomAuthBackend(ModelBackend):
+#     def authenticate(self, request, username=None, password=None, **kwargs):
+#         UserModel = self.get_user_model()
+#         try:
+#             user = UserModel.objects.get(name=username)
+#         except UserModel.DoesNotExist:
+#             return None
+#         if user.check_password(password):
+#             return user
+#         return None

@@ -48,16 +48,17 @@ def user_login(request):
     serializer = UserLoginSerializer(data=request.data)
     if serializer.is_valid():
         user = authenticate(
-            username=serializer.validated_data["name"],
+            username=serializer.validated_data["username"],  # 변경
             password=serializer.validated_data["phone_number"],
         )
         if user is not None:
             login(request, user)
             return Response(
-                {"message": f"{user.user_type.capitalize()} 로그인 되었습니다."},
+                {
+                    "message": f"{serializer.validated_data['user_type'].capitalize()} 로그인 되었습니다."
+                },
                 status=status.HTTP_200_OK,
             )
-
     return Response(
         {"message": "로그인 정보가 올바르지 않습니다."}, status=status.HTTP_401_UNAUTHORIZED
     )

@@ -79,6 +79,7 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",  # 기본 인증 백엔드
+    "accounts.backends.CustomAuthBackend",
 ]
 AUTH_USER_MODEL = "accounts.User"
 
