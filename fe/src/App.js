@@ -31,15 +31,15 @@ function App() {
           <Route path="/JoinQ2" element={<JoinQ2 />} />
           <Route path="/JoinComplete" element={<JoinComplete />} /> */}
           {/* 민우경로_답변자 */}
-          <Route path="/Answer" element={<Answer />} />
+          {/* <Route path="/Answer" element={<Answer />} />
           <Route path="/ResMy" element={<ResMy />} />
-          <Route path="/Record" element={<Record />} />
+          <Route path="/Record" element={<Record />} /> */}
           {/* 민우경로_작성자 */}
-          <Route path="/QuestMy" element={<QuestMy />} />
+          {/* <Route path="/QuestMy" element={<QuestMy />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />
           <Route path="/" element={<Question />} />
           <Route path="/Waiting" element={<Waiting />} />
-          <Route path="/Example" element={<Example />} />
+          <Route path="/Example" element={<Example />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
