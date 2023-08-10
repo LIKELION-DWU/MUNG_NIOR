@@ -44,21 +44,51 @@ def teacher_signup(request):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
-def user_login(request):
+def student_login(request):
     serializer = UserLoginSerializer(data=request.data)
     if serializer.is_valid():
+        username = serializer.validated_data["username"]
+        phone_number = serializer.validated_data["phone_number"]
+
         user = authenticate(
-            username=serializer.validated_data["username"],  # 변경
-            password=serializer.validated_data["phone_number"],
+            request=request,
+            username=username,
+            password=phone_number,
         )
-        if user is not None:
+
+        if user is not None and user.user_type == "student":
             login(request, user)
             return Response(
-                {
-                    "message": f"{serializer.validated_data['user_type'].capitalize()} 로그인 되었습니다."
-                },
+                {"message": "Student 로그인 되었습니다."},
                 status=status.HTTP_200_OK,
             )
+
+    return Response(
+        {"message": "로그인 정보가 올바르지 않습니다."}, status=status.HTTP_401_UNAUTHORIZED
+    )
+
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def teacher_login(request):
+    serializer = UserLoginSerializer(data=request.data)
+    if serializer.is_valid():
+        username = serializer.validated_data["username"]
+        phone_number = serializer.validated_data["phone_number"]
+
+        user = authenticate(
+            request=request,
+            username=username,
+            password=phone_number,
+        )
+
+        if user is not None and user.user_type == "teacher":
+            login(request, user)
+            return Response(
+                {"message": "Teacher 로그인 되었습니다."},
+                status=status.HTTP_200_OK,
+            )
+
     return Response(
         {"message": "로그인 정보가 올바르지 않습니다."}, status=status.HTTP_401_UNAUTHORIZED
     )
