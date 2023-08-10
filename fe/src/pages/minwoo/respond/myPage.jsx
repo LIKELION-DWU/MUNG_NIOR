@@ -31,7 +31,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 490px;
 
   line-height: 1;
 `;
@@ -44,7 +44,7 @@ const Menu = styled.div`
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
@@ -189,6 +189,11 @@ const List = () => {
     background: #fff;
   `;
   const ListContent = styled.div`
+    width: 540px; /* 원하는 가로 길이로 설정 */
+    white-space: nowrap; /* 한 줄로 글이 표시되도록 설정 */
+    overflow: hidden; /* 넘치는 부분을 감춤 */
+    text-overflow: ellipsis; /* 넘치는 부분을 생략 부호로 표시 */
+
     color: #404040;
     font-family: Noto Sans KR;
     font-size: 25px;
@@ -207,7 +212,9 @@ const List = () => {
 
   return (
     <ListWhite>
-      <ListContent>앱의 권한 허용을</ListContent>
+      <ListContent>
+        doqdmsldl 궈나낙 낙낙가나아아아ㅏ아아아ㅏㅇddddddㅇ
+      </ListContent>
       <ListBtn
         onClick={GoRecord}
         src={`${process.env.PUBLIC_URL}/images_minwoo/next.png`}

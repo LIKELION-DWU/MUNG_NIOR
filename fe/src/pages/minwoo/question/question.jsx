@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 const Container = styled.div`
   position: relative;
@@ -102,9 +106,98 @@ const SendBtn = styled.img`
   position: fixed;
   width: 300px;
 
-  margin-top: -160px;
-  margin-left: 985px;
+  margin-top: -447px;
+  margin-left: 800px;
 `;
+
+const Dictaphone = () => {
+  const Div1 = styled.div`
+    height: 565px;
+
+    padding-top: 20px;
+    padding-left: 190px;
+  `;
+  const P = styled.p`
+    display: inline-block;
+    margin-left: 340px;
+
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+  `;
+  const P2 = styled.p`
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: -500px;
+
+    color: #ff6d2e;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+  `;
+
+  const Transcript = styled.p`
+    position: absolute;
+    overflow: hidden;
+
+    text-align: center;
+
+    margin-top: -625px;
+    margin-left: 250px;
+
+    width: 400px;
+    height: 400px;
+
+    color: #000;
+    text-align: center;
+    font-family: Tmoney RoundWind;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  `;
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
+
+  return (
+    <Div1>
+      <P>음성인식: </P>
+      <P2>{listening ? "시작" : "멈춤"}</P2>
+      <div
+        // onClick={SpeechRecognition.startListening}
+        style={{ marginTop: "-100px" }}
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/images_minwoo/plate.png`}
+          width="900"
+        />
+      </div>{" "}
+      <Transcript onClick={SpeechRecognition.startListening}>
+        {transcript}
+      </Transcript>
+      {/* <button onClick={SpeechRecognition.stopListening}>Stop</button>
+      <button onClick={resetTranscript}>Reset</button> */}
+      {!listening && (
+        <SendBtn
+          // onClick={GoWaiting}
+          src={`${process.env.PUBLIC_URL}/images_minwoo/sendBtn.png`}
+        ></SendBtn>
+      )}
+    </Div1>
+  );
+};
 
 const Question = () => {
   const navigate = useNavigate();
@@ -142,23 +235,7 @@ const Question = () => {
         <strong>당신의 질문을 담아주세요</strong>
       </Div>
 
-      <PlateImg
-        src={`${process.env.PUBLIC_URL}/images_minwoo/plate.png`}
-        alt="접시"
-      ></PlateImg>
-
-      <TextInput>
-        접시를 누르면
-        <br />
-        음성인식을
-        <br />
-        시작합니다.
-      </TextInput>
-
-      <SendBtn
-        onClick={GoWaiting}
-        src={`${process.env.PUBLIC_URL}/images_minwoo/sendBtn.png`}
-      ></SendBtn>
+      <Dictaphone />
     </Container>
   );
 };
