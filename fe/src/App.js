@@ -16,6 +16,7 @@ import QuestMy from "./pages/minwoo/question/myPage";
 import LookAnswer from "./pages/minwoo/question/lookAnswer";
 import Question from "./pages/minwoo/question/question";
 import Waiting from "./pages/minwoo/question/waiting";
+import Example from "./pages/minwoo/example";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/LookAnswer" element={<LookAnswer />} />
           <Route path="/" element={<Question />} />
           <Route path="/Waiting" element={<Waiting />} />
+          <Route path="/Example" element={<Example />} />
         </Routes>
       </div>
     </BrowserRouter>

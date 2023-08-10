@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
+
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   width: 1280px;
   height: 720px;
@@ -11,9 +17,6 @@ const Container = styled.div`
   border: 0.5px solid #000;
   background: #fff;
   margin: 0px auto;
-
-  overflow-y: auto;
-  overflow-x: hidden;
 `;
 
 // 상단바
@@ -28,7 +31,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 490px;
 
   line-height: 1;
 `;
@@ -41,7 +44,7 @@ const Menu = styled.div`
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
@@ -60,8 +63,8 @@ const ListContainer = styled.div`
 `;
 
 const WhiteBox = styled.div`
-  width: 1100px;
-  height: 250px;
+  width: 1130px;
+  height: ${(props) => (props.expanded ? "343px" : "210px")};
 
   margin-left: 50px;
   margin-top: 38px;
@@ -73,13 +76,13 @@ const WhiteBox = styled.div`
   box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.54);
 `;
 const QuestBox = styled.div`
-  height: 70px;
+  height: 50px;
 
   padding-left: 52px;
 
   color: #000;
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 33px;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
@@ -88,13 +91,13 @@ const AnswerBox = styled.div`
   background: #ff0000;
   position: relative;
 
-  width: 940px;
-  height: 70px;
+  width: 995px;
+  height: ${(props) => (props.expanded ? "190px" : "53px")};
 
-  margin-top: 20px;
+  margin-top: 13px;
   margin-left: 50px;
 
-  padding-left: 50px;
+  padding-left: 30px;
   padding-top: 20px;
 
   border-radius: 20px;
@@ -102,29 +105,47 @@ const AnswerBox = styled.div`
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
 `;
 const InputAnswer = styled.input`
-  width: 910px;
-  height: 50px;
+  width: 950px;
+  height: ${(props) => (props.expanded ? "120px" : "40px")};
+  border: none;
+
+  color: #000;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 `;
 const NextBtn = styled.button`
   height: 60px;
   width: 90px;
 
-  margin-left: 970px;
-  margin-top: -3px;
+  margin-left: 998px;
+  margin-top: 0px;
 
   background-color: transparent;
   border: none;
 `;
 const List = () => {
+  //
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleInputClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <WhiteBox>
+    <WhiteBox expanded={isExpanded}>
       <QuestBox>Q. 키오스크 결제는 어떻게?</QuestBox>
-      <AnswerBox>
-        <InputAnswer></InputAnswer>
+      <AnswerBox expanded={isExpanded}>
+        <InputAnswer
+          onClick={handleInputClick}
+          expanded={isExpanded}
+        ></InputAnswer>
         <img
           src="./images_minwoo/addImg.png"
           style={{
-            width: "80px",
+            width: "70px",
             position: "absolute",
             bottom: "6px",
             right: "10px",
@@ -169,6 +190,7 @@ const Answer = () => {
       </MenuContainer>
 
       <ListContainer>
+        <List />
         <List />
         <List />
       </ListContainer>

@@ -189,6 +189,13 @@ const List = () => {
     background: #fff;
   `;
   const ListContent = styled.div`
+    white-space: no-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 70px;
+    width: 540px;
+
     color: #404040;
     font-family: Noto Sans KR;
     font-size: 25px;
@@ -207,7 +214,7 @@ const List = () => {
 
   return (
     <ListWhite>
-      <ListContent>앱의 권한 허용을</ListContent>
+      <ListContent>gkgkkkkkkkkkkkkkkkkkkkkggggggggggggggggg</ListContent>
       <ListBtn
         onClick={GoRecord}
         src={`${process.env.PUBLIC_URL}/images_minwoo/next.png`}
