@@ -30,11 +30,18 @@ function App() {
       <div>
         <Styled />
         <Routes>
-          {/* 세민 경로_메인 */}
-          {/* <Route path="/" element={<PreMain />} />
-          <Route path="/JoinQ1" element={<JoinQ1 />} />
-          <Route path="/JoinQ2" element={<JoinQ2 />} />
-          <Route path="/JoinComplete" element={<JoinComplete />} />  */}
+          {/* 세민 경로메인 /}
+          <Route path="/" element={<PreMain />} />
+          <Route path="/MainQ" element={<MainQ />} />
+          <Route path="/MainR" element={<MainR />} />
+          {/ 세민 경로회원가입 /}
+          <Route path="/JoinChoice" element={<JoinChoice />} />
+          <Route path="/JoinQ" element={<JoinQ />} />
+          <Route path="/JoinComplete" element={<JoinComplete />} />
+          <Route path="/JoinR" element={<JoinR />} />
+          {/ 세민 경로로그인 /}
+          <Route path="/LoginQ" element={<LoginQ />} />
+          <Route path="/LoginR" element={<LoginR />} />
           {/* 민우경로_답변자 */}
           {/* <Route path="/Answer" element={<Answer />} />
           <Route path="/ResMy" element={<ResMy />} />
@@ -42,8 +49,8 @@ function App() {
           {/* 민우경로_작성자 */}
           {/* <Route path="/QuestMy" element={<QuestMy />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />
-          <Route path="/" element={<Question />} /> */}
-          {/* <Route path="/Waiting" element={<Waiting />} /> */}
+          <Route path="/" element={<Question />} />
+          <Route path="/Waiting" element={<Waiting />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
