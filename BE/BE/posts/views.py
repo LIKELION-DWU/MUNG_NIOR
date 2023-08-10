@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from .models import Question, Answer
 from .serializers import QuestionSerializer, AnswerSerializer
 from rest_framework.viewsets import ModelViewSet
