@@ -195,6 +195,9 @@ const MainQ = () => {
   const gotoPreMain = () => {
     navigate("/");
   };
+  const gotoQuestion = () => {
+    navigate("/Question");
+  };
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -238,7 +241,7 @@ const MainQ = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu>질문하기</Menu>
+        <Menu onClick={gotoQuestion}>질문하기</Menu>
         <Menu>답변보기</Menu>
         <Menu onClick={gotoPreMain}>로그아웃</Menu>
         <Menu>나의 기록</Menu>
