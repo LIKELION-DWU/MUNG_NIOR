@@ -10,7 +10,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("The phonNumber field must be set")
 
         user = self.model(user_type=user_type, **extra_fields)
-        user.set_password(extra_fields.get("password"))
+        user.set_password(extra_fields.get("phone_number"))
         user.save(using=self._db)
         return user
 
@@ -51,15 +51,3 @@ class User(AbstractUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
-
-
-# class CustomAuthBackend(ModelBackend):
-#     def authenticate(self, request, username=None, password=None, **kwargs):
-#         UserModel = self.get_user_model()
-#         try:
-#             user = UserModel.objects.get(name=username)
-#         except UserModel.DoesNotExist:
-#             return None
-#         if user.check_password(password):
-#             return user
-#         return None
