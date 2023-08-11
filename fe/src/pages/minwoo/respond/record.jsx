@@ -148,11 +148,15 @@ const Record = () => {
   const navigate = useNavigate();
 
   const GoMy = () => {
-    navigate("/ResMy");
+    navigate("/RespondMyPage");
   };
 
   const GoAnswer = () => {
     navigate("/Answer");
+  };
+
+  const GoLogout = () => {
+    navigate("/");
   };
 
   return (
@@ -169,7 +173,7 @@ const Record = () => {
         <Menu onClick={GoAnswer} className="design">
           답변하기
         </Menu>
-        <Menu>로그아웃</Menu>
+        <Menu onClick={GoLogout}>로그아웃</Menu>
         <Menu onClick={GoMy}>나의 기록</Menu>
       </MenuContainer>
 

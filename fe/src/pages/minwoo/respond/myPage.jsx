@@ -179,7 +179,7 @@ const List = () => {
 
   const GoRecord = () => {
     console.log("go");
-    navigate("/record");
+    navigate("/Record");
   };
 
   const ListWhite = styled.div`
@@ -254,12 +254,16 @@ const MoreBtn = styled.button`
 const ResMy = () => {
   const navigate = useNavigate();
 
-  const GoMy = () => {
-    navigate("/ResMy");
+  const GoMyPage = () => {
+    navigate("/RespondMyPage");
   };
 
   const GoAnswer = () => {
     navigate("/Answer");
+  };
+
+  const GoLogout = () => {
+    navigate("/");
   };
 
   return (
@@ -273,8 +277,8 @@ const ResMy = () => {
       </Logo>
       <MenuContainer>
         <Menu onClick={GoAnswer}>답변하기</Menu>
-        <Menu>로그아웃</Menu>
-        <Menu onClick={GoMy} className="design">
+        <Menu onClick={GoLogout}>로그아웃</Menu>
+        <Menu onClick={GoMyPage} className="design">
           나의 기록
         </Menu>
       </MenuContainer>

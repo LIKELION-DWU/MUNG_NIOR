@@ -215,17 +215,14 @@ const Dictaphone = () => {
 const Question = () => {
   const navigate = useNavigate();
 
-  const LookAnswer = () => {
+  const GoAnswer = () => {
     navigate("/LookAnswer");
   };
-  const Logout = () => {
-    navigate();
+  const GoLogout = () => {
+    navigate("/");
   };
-  const MyPage = () => {
-    navigate("/QuestMy");
-  };
-  const GoWaiting = () => {
-    navigate("/Waiting");
+  const GoMyPage = () => {
+    navigate("/QuestionMyPage");
   };
 
   return (
@@ -239,9 +236,9 @@ const Question = () => {
       </Logo>
       <MenuContainer>
         <Menu className="question">질문하기</Menu>
-        <Menu onClick={LookAnswer}>답변보기</Menu>
-        <Menu>로그아웃</Menu>
-        <Menu onClick={MyPage}>나의 기록</Menu>
+        <Menu onClick={GoAnswer}>답변보기</Menu>
+        <Menu onCick={GoLogout}>로그아웃</Menu>
+        <Menu onClick={GoMyPage}>나의 기록</Menu>
       </MenuContainer>
 
       <Div>

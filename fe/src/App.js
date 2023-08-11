@@ -15,14 +15,13 @@ import LoginQ from "./pages/semin/Login/LoginQ";
 import LoginR from "./pages/semin/Login/LoginR";
 //minwoo_답변자
 import Answer from "./pages/minwoo/respond/answer";
-import ResMy from "./pages/minwoo/respond/myPage";
+import RespondMyPage from "./pages/minwoo/respond/myPage";
 import Record from "./pages/minwoo/respond/record";
 //minwoo_작성자
-import QuestMy from "./pages/minwoo/question/myPage";
+import QuestionMyPage from "./pages/minwoo/question/myPage";
 import LookAnswer from "./pages/minwoo/question/lookAnswer";
 import Question from "./pages/minwoo/question/question";
 import Waiting from "./pages/minwoo/question/waiting";
-import Example from "./pages/minwoo/example";
 
 function App() {
   return (
@@ -30,27 +29,27 @@ function App() {
       <div>
         <Styled />
         <Routes>
-          {/* 세민 경로_메인 */}
-          {/* <Route path="/" element={<PreMain />} />
+          {/* 세민 경로_메인, 로그인 이후 메인 페이지 */}
+          <Route path="/" element={<PreMain />} />
           <Route path="/MainQ" element={<MainQ />} />
-          <Route path="/MainR" element={<MainR />} /> */}
+          <Route path="/MainR" element={<MainR />} />
           {/* 세민 경로_회원가입 */}
-          {/* <Route path="/JoinChoice" element={<JoinChoice />} />
+          <Route path="/JoinChoice" element={<JoinChoice />} />
           <Route path="/JoinQ" element={<JoinQ />} />
           <Route path="/JoinComplete" element={<JoinComplete />} />
-          <Route path="/JoinR" element={<JoinR />} /> */}
+          <Route path="/JoinR" element={<JoinR />} />
           {/* 세민 경로_로그인 */}
-          {/* <Route path="/LoginQ" element={<LoginQ />} />
-          <Route path="/LoginR" element={<LoginR />} /> */}
+          <Route path="/LoginQ" element={<LoginQ />} />
+          <Route path="/LoginR" element={<LoginR />} />
           {/* 민우 경로_답변자 */}
-          {/* <Route path="/Answer" element={<Answer />} />
-          <Route path="/ResMy" element={<ResMy />} />
-          {/* <Route path="/Record" element={<Record />} /> */}
+          <Route path="/Answer" element={<Answer />} />
+          <Route path="/RespondMyPage" element={<RespondMyPage />} />
+          <Route path="/Record" element={<Record />} />
           {/* 민우경로_작성자 */}
-          {/* <Route path="/QuestMy" element={<QuestMy />} />
+          <Route path="/QuestionMyPage" element={<QuestionMyPage />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />
-          <Route path="/" element={<Question />} />
-          <Route path="/Waiting" element={<Waiting />} /> */}
+          <Route path="/Question" element={<Question />} />
+          <Route path="/Waiting" element={<Waiting />} />
         </Routes>
       </div>
     </BrowserRouter>
