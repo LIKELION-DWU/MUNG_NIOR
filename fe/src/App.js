@@ -31,8 +31,8 @@ function App() {
         <Styled />
         <Routes>
           {/* 세민 경로_메인 */}
-          {/* <Route path="/" element={<PreMain />} />
-          <Route path="/MainQ" element={<MainQ />} />
+          <Route path="/" element={<PreMain />} />
+          {/* <Route path="/MainQ" element={<MainQ />} />
           <Route path="/MainR" element={<MainR />} /> */}
           {/* 세민 경로_회원가입 */}
           {/* <Route path="/JoinChoice" element={<JoinChoice />} />
