@@ -50,33 +50,19 @@ class AnswerViewSet(ModelViewSet):
         return self.queryset.filter(question=id)
 
 
-# student-id[question[question-id, content, answer[answer-id, content, image, teacher-id]]
-# 질문자 마이페이지
-# class MyQuestionsListView(generics.ListAPIView):
-#     serializer_class = MyQuestionSerializer
-#     permission_classes = [IsAuthenticated]
-
-#     def get_queryset(self):
-#         user = self.request.user
-#         return Question.objects.filter(id=user.id)
-
-
 class UserQuestionListView(ListAPIView):
-    queryset = User.objects.filter(user_type="student")
     serializer_class = MyQuestionSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(id=user.id)
 
 
 class UserAnswerListView(ListAPIView):
-    queryset = User.objects.filter(user_type="teacher")
     serializer_class = MyAnswerSerializer
+    permission_classes = [IsAuthenticated]
 
-
-# teacher-id[answer[answer-id, content, photo]]
-# 답변자 마이페이지
-# class MyAnswersListView(generics.ListAPIView):
-#     serializer_class = MyAnswerSerializer
-#     permission_classes = [IsAuthenticated]
-
-#     def get_queryset(self):
-#         user = self.request.user
-#         return Answer.objects.filter(id=user.id)
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(id=user.id)
