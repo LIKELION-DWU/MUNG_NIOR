@@ -27,12 +27,12 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: fixed;
-  width: 1020px;
+  width: 788px;
   height: 85px;
   padding-top: 40px;
 
-  margin-top: -80px;
-  margin-left: 480px;
+  margin-top: -82px;
+  margin-left: 461px;
   background: rgba(255, 255, 255, 0.78);
 
   line-height: 1;

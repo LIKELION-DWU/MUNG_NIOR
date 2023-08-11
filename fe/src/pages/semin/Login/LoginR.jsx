@@ -26,7 +26,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: 310px;
 
   line-height: 1;
@@ -64,7 +64,7 @@ const Choice = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 70px;
+  top: 50px;
 
   :hover {
     cursor: pointer;
@@ -77,7 +77,7 @@ const Choice = styled.div`
 
 const InputQ = styled.div`
   position: relative;
-  top: 100px;
+  top: 85px;
   text-align: center;
   margin-bottom: -20px;
 `;
@@ -91,7 +91,7 @@ const Input = styled.input`
   margin: auto;
   margin-top: 30px;
 
-  top: 120px;
+  top: 100px;
 
   width: 500px;
   height: 75px;
@@ -132,7 +132,7 @@ const KakaoLogin = styled.div`
   align-items: center;
   flex-direction: column;
   margin: auto;
-  margin-top: 130px;
+  margin-top: 110px;
   cursor: pointer;
 
   color: #000;
@@ -147,7 +147,7 @@ const Loginbtn = styled.div`
   position: relative;
   cursor: pointer;
 
-  top: -53px;
+  top: -55px;
   left: 980px;
 `;
 

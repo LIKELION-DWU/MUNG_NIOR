@@ -26,7 +26,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: 310px;
 
   line-height: 1;
@@ -60,7 +60,7 @@ const Menu = styled.div`
 
 const Name = styled.div`
   position: relative;
-  top: 90px;
+  top: 80px;
   text-align: center;
 `;
 
@@ -71,7 +71,7 @@ const NameInput = styled.input`
   align-items: center;
   margin: auto;
 
-  top: 120px;
+  top: 110px;
 
   width: 670px;
   height: 110px;
@@ -96,7 +96,7 @@ const NameInput = styled.input`
 
 const Phone = styled.div`
   position: relative;
-  top: 150px;
+  top: 140px;
   text-align: center;
 `;
 
@@ -107,7 +107,7 @@ const PhoneInput = styled.input`
   align-items: center;
   margin: auto;
 
-  top: 180px;
+  top: 170px;
 
   width: 670px;
   height: 110px;
@@ -132,7 +132,7 @@ const PhoneInput = styled.input`
 
 const Nextbtn = styled.div`
   position: relative;
-  top: 160px;
+  top: 137px;
   left: 1120px;
   cursor: pointer;
 `;
