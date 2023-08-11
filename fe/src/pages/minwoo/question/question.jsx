@@ -151,6 +151,18 @@ const Dictaphone = () => {
     font-weight: 900;
   `;
 
+  const Instruction = styled.div`
+    margin-top: 30px;
+
+    color: rgba(0, 0, 0, 0.64);
+    text-align: center;
+    font-family: Tmoney RoundWind;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  `;
+
   const Transcript = styled.p`
     position: absolute;
     overflow: hidden;
@@ -196,11 +208,22 @@ const Dictaphone = () => {
           width="900"
         />
       </div>{" "}
-      <Transcript onClick={SpeechRecognition.startListening}>
+      <Transcript
+        onClick={SpeechRecognition.startListening}
+        empty={transcript === ""}
+      >
         {transcript}
+        {transcript === "" && (
+          <Instruction>
+            접시를 누르면
+            <br />
+            음성인식을
+            <br /> 시작합니다
+          </Instruction>
+        )}
       </Transcript>
-      {/* <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button> */}
+      {/* <button onClick={SpeechRecognition.stopListening}>Stop</button> */}
+      {/* <button onClick={resetTranscript}>Reset</button> */}
       {!listening && (
         <SendBtn
           onClick={GoWaiting}
