@@ -47,10 +47,10 @@ function App() {
           <Route path="/ResMy" element={<ResMy />} />
           <Route path="/Record" element={<Record />} /> */}
           {/* 민우경로_작성자 */}
-          {/* <Route path="/QuestMy" element={<QuestMy />} />
+          <Route path="/QuestMy" element={<QuestMy />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />
           <Route path="/" element={<Question />} />
-          <Route path="/Waiting" element={<Waiting />} /> */}
+          <Route path="/Waiting" element={<Waiting />} />
         </Routes>
       </div>
     </BrowserRouter>
