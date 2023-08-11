@@ -61,9 +61,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.question {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -111,6 +118,12 @@ const SendBtn = styled.img`
 `;
 
 const Dictaphone = () => {
+  const navigate = useNavigate();
+
+  const GoWaiting = () => {
+    navigate("/Waiting");
+  };
+
   const Div1 = styled.div`
     height: 565px;
 
@@ -191,7 +204,7 @@ const Dictaphone = () => {
       <button onClick={resetTranscript}>Reset</button> */}
       {!listening && (
         <SendBtn
-          // onClick={GoWaiting}
+          onClick={GoWaiting}
           src={`${process.env.PUBLIC_URL}/images_minwoo/sendBtn.png`}
         ></SendBtn>
       )}
@@ -225,7 +238,7 @@ const Question = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu style={{ textDecorationLine: "underline" }}>질문하기</Menu>
+        <Menu className="question">질문하기</Menu>
         <Menu onClick={LookAnswer}>답변보기</Menu>
         <Menu>로그아웃</Menu>
         <Menu onClick={MyPage}>나의 기록</Menu>
