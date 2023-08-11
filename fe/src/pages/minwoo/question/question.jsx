@@ -32,20 +32,19 @@ const Logo = styled.div`
   margin-left: 60px;
   z-index: 999;
 `;
-// background: rgba(255, 255, 255, 0.78);
+//background: rgba(255, 255, 255, 0.78);
 const MenuContainer = styled.div`
-  background: rgba(255, 255, 255, 0.78);
-  width: 1020px;
-  height: 85px;
-
   position: fixed;
-
-  top: 3px;
-
+  width: 788px;
+  height: 85px;
   padding-top: 40px;
-  margin-left: 260px;
+
+  margin-top: 34px;
+  margin-left: 480px;
+  background: rgba(255, 255, 255, 0.78);
 
   line-height: 1;
+  z-index: 5;
 `;
 
 const Menu = styled.div`
@@ -236,9 +235,8 @@ const Question = () => {
       </Logo>
       <MenuContainer>
         <Menu className="question">질문하기</Menu>
-        <Menu onClick={GoAnswer}>답변보기</Menu>
         <Menu onCick={GoLogout}>로그아웃</Menu>
-        <Menu onClick={GoMyPage}>나의 기록</Menu>
+        <Menu onClick={GoMyPage}>질문 기록</Menu>
       </MenuContainer>
 
       <Div>
