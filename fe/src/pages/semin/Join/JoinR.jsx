@@ -26,7 +26,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: 310px;
 
   line-height: 1;
@@ -109,7 +109,7 @@ const PhoneInput = Input;
 
 const Nextbtn = styled.div`
   position: relative;
-  top: -130px;
+  top: -151px;
   left: 1120px;
 
   cursor: pointer;
