@@ -26,7 +26,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: 310px;
 
   line-height: 1;
@@ -60,13 +60,13 @@ const Menu = styled.div`
 
 const Choice = styled.div`
   position: relative;
-  top: 100px;
+  top: 90px;
   text-align: center;
 `;
 
 const QA = styled.div`
   position: relative;
-  top: 150px;
+  top: 130px;
   display: flex;
   justify-content: center;
   align-items: center;

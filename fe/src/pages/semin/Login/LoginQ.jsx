@@ -26,7 +26,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-left: 310px;
 
   line-height: 1;
@@ -128,7 +128,7 @@ const Loginbtn = styled.div`
   position: relative;
   cursor: pointer;
 
-  top: 185px;
+  top: 163px;
   left: 980px;
 `;
 
