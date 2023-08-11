@@ -195,6 +195,12 @@ const MainR = () => {
   const gotoPreMain = () => {
     navigate("/");
   };
+  const gotoAnswer = () => {
+    navigate("/Answer");
+  };
+  const gotoRespondMyPage = () => {
+    navigate("/RespondMyPage");
+  };
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -238,9 +244,9 @@ const MainR = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu>답변하기</Menu>
+        <Menu onClick={gotoAnswer}>답변하기</Menu>
         <Menu onClick={gotoPreMain}>로그아웃</Menu>
-        <Menu>나의 기록</Menu>
+        <Menu onClick={gotoRespondMyPage}>답변 기록</Menu>
       </MenuContainer>
       <Images>
         <img

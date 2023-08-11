@@ -32,7 +32,7 @@ const MenuContainer = styled.div`
   padding-top: 40px;
 
   margin-top: -87px;
-  margin-left: 290px;
+  margin-left: 480px;
   background: rgba(255, 255, 255, 0.78);
 
   line-height: 1;
@@ -196,6 +196,9 @@ const MainQ = () => {
   const gotoPreMain = () => {
     navigate("/");
   };
+  const gotoQuestionMyPage = () => {
+    navigate("/QuestionMyPage");
+  };
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -240,9 +243,8 @@ const MainQ = () => {
       </Logo>
       <MenuContainer>
         <Menu>질문하기</Menu>
-        <Menu>답변보기</Menu>
         <Menu onClick={gotoPreMain}>로그아웃</Menu>
-        <Menu>나의 기록</Menu>
+        <Menu onClick={gotoQuestionMyPage}>질문 기록</Menu>
       </MenuContainer>
       <Images>
         <img
