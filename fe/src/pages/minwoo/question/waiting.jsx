@@ -47,9 +47,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.design {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -148,7 +155,7 @@ const Waiting = () => {
         />
       </Logo>
       <MenuContainer>
-        <Menu style={{ textDecorationLine: "underline" }}>질문하기</Menu>
+        <Menu className="design">질문하기</Menu>
         <Menu>답변보기</Menu>
         <Menu>로그아웃</Menu>
         <Menu>나의 기록</Menu>
