@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import "./CustomScrollbar.css";
+import axios from "axios";
 
 const Container = styled.div`
   position: relative;
@@ -192,15 +193,28 @@ const RectangleGray = styled.div`
 
 const MainR = () => {
   const navigate = useNavigate();
-  const gotoPreMain = () => {
-    navigate("/");
-  };
   const gotoAnswer = () => {
     navigate("/Answer");
   };
   const gotoRespondMyPage = () => {
     navigate("/RespondMyPage");
   };
+
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await axios.post("http://127.0.0.1:8000/logout/");
+
+  //     if (response.status === 200) {
+  //       alert("로그아웃되었습니다.");
+  //       navigate("/"); // 로그아웃 후 로그인 전 메인 페이지로 이동
+  //     } else {
+  //       alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
+  //     }
+  //   } catch (error) {
+  //     console.error("로그아웃 요청 중 오류 발생:", error);
+  //     alert("로그아웃에 오류가 발생했습니다. 다시 시도해주세요.");
+  //   }
+  // };
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -245,7 +259,7 @@ const MainR = () => {
       </Logo>
       <MenuContainer>
         <Menu onClick={gotoAnswer}>답변하기</Menu>
-        <Menu onClick={gotoPreMain}>로그아웃</Menu>
+        <Menu>로그아웃</Menu>
         <Menu onClick={gotoRespondMyPage}>답변 기록</Menu>
       </MenuContainer>
       <Images>

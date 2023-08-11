@@ -27,7 +27,7 @@ const Logo = styled.div`
 
 const MenuContainer = styled.div`
   position: fixed;
-  width: 1020px;
+  width: 910px;
   height: 85px;
   padding-top: 40px;
 

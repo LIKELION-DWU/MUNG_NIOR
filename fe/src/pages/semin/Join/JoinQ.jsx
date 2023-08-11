@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div`
   position: relative;
@@ -137,7 +138,7 @@ const Nextbtn = styled.div`
   cursor: pointer;
 `;
 
-const JoinQ1 = () => {
+const JoinQ = () => {
   const navigate = useNavigate();
   const gotoJoinChoice = () => {
     navigate("/JoinChoice");
@@ -148,11 +149,30 @@ const JoinQ1 = () => {
   const gotoJoinComplete = () => {
     navigate("/JoinComplete");
   };
-  const handleNextBtnClick = () => {
+
+  const handleNextBtnClick = async () => {
     if (nameQ.trim() === "" || phoneQ.trim() === "") {
       alert("필수 정보를 모두 입력해주세요.");
     } else {
-      gotoJoinComplete();
+      try {
+        // 회원가입 정보를 서버로 전송
+        const response = await axios.post(
+          "http://127.0.0.1:8000/signup/student/",
+          {
+            username: nameQ,
+            phoneNumber: phoneQ,
+          }
+        );
+        if (response.status === 201) {
+          alert("회원가입이 완료되었습니다.");
+          gotoJoinComplete();
+        } else {
+          alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+        }
+      } catch (error) {
+        console.error("회원가입 요청 중 오류 발생:", error);
+        alert("회원가입에 오류가 발생했습니다. 다시 시도해주세요.");
+      }
     }
   };
 
@@ -271,4 +291,4 @@ const JoinQ1 = () => {
   );
 };
 
-export default JoinQ1;
+export default JoinQ;

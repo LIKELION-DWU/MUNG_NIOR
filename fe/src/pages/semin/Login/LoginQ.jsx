@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div`
   position: relative;
@@ -143,11 +144,36 @@ const LoginQ = () => {
   const gotoLoginR = () => {
     navigate("/LoginR");
   };
-  const handleLoginBtnClick = () => {
+
+  const handleLoginBtnClick = async () => {
     if (nameQ.trim() === "" || phoneQ.trim() === "") {
       alert("필수 정보를 모두 입력해주세요.");
     } else {
-      gotoMainQ();
+      try {
+        // 로그인 정보를 서버로 전송
+        const response = await axios.post(
+          "http://127.0.0.1:8000/login/student/",
+          {
+            username: nameQ,
+            phoneNumber: phoneQ,
+          }
+        );
+
+        // 백엔드로부터의 응답 처리
+        if (response.status === 200) {
+          alert("로그인에 성공했습니다.");
+          gotoMainQ();
+        } else {
+          alert("로그인에 실패했습니다. 다시 시도해주세요.");
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          alert("인증되지 않았거나 학생이 아닙니다.");
+        } else {
+          console.error("로그인 요청 중 오류 발생:", error);
+          alert("로그인에 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+      }
     }
   };
 
