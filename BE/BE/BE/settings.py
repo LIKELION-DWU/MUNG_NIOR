@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "rest_auth.registration",
     "allauth.socialaccount.providers.kakao",
+    "corsheaders",
 ]
 
 SITE_ID = 1
@@ -75,6 +76,16 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ],
+    # CamelCaseJSON 관련 설정
+    "DEFAULT_RENDERER_CLASSES": (
+        "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
+        "djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer",
+    ),
+    "DEFAULT_PARSER_CLASSES": (
+        "djangorestframework_camel_case.parser.CamelCaseFormParser",
+        "djangorestframework_camel_case.parser.CamelCaseMultiPartParser",
+        "djangorestframework_camel_case.parser.CamelCaseJSONParser",
+    ),
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -91,6 +102,9 @@ ACCOUNT_AUTHENTICATED_LOGOUT_REDIRECTS = True
 ACCOUNT_LOGOUT_REDIRECT_URL = "http://127.0.0.1:8000"
 
 MIDDLEWARE = [
+    # 가장 높은 위치에 추가
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -178,3 +192,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CSRF_COOKIE_SECURE = False
 # CSRF_USE_SESSIONS = False
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
