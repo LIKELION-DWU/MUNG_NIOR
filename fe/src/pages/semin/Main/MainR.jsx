@@ -206,7 +206,7 @@ const MainR = () => {
 
   //     if (response.status === 200) {
   //       alert("로그아웃되었습니다.");
-  //       navigate("/"); // 로그아웃 후 로그인 전 메인 페이지로 이동
+  //       navigate("/"); // Redirect to the login page after successful logout
   //     } else {
   //       alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
   //     }
@@ -259,7 +259,7 @@ const MainR = () => {
       </Logo>
       <MenuContainer>
         <Menu onClick={gotoAnswer}>답변하기</Menu>
-        <Menu>로그아웃</Menu>
+        <Menu onClick={handleLogout}>로그아웃</Menu>
         <Menu onClick={gotoRespondMyPage}>답변 기록</Menu>
       </MenuContainer>
       <Images>
