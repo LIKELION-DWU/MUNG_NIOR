@@ -31,21 +31,21 @@ function App() {
         <Styled />
         <Routes>
           {/* 세민 경로_메인 */}
-          <Route path="/" element={<PreMain />} />
+          {/* <Route path="/" element={<PreMain />} />
           <Route path="/MainQ" element={<MainQ />} />
-          <Route path="/MainR" element={<MainR />} />
+          <Route path="/MainR" element={<MainR />} /> */}
           {/* 세민 경로_회원가입 */}
-          <Route path="/JoinChoice" element={<JoinChoice />} />
+          {/* <Route path="/JoinChoice" element={<JoinChoice />} />
           <Route path="/JoinQ" element={<JoinQ />} />
           <Route path="/JoinComplete" element={<JoinComplete />} />
-          <Route path="/JoinR" element={<JoinR />} />
+          <Route path="/JoinR" element={<JoinR />} /> */}
           {/* 세민 경로_로그인 */}
-          <Route path="/LoginQ" element={<LoginQ />} />
-          <Route path="/LoginR" element={<LoginR />} />
+          {/* <Route path="/LoginQ" element={<LoginQ />} />
+          <Route path="/LoginR" element={<LoginR />} /> */}
           {/* 민우 경로_답변자 */}
-          <Route path="/Answer" element={<Answer />} />
+          {/* <Route path="/Answer" element={<Answer />} />
           <Route path="/ResMy" element={<ResMy />} />
-          <Route path="/Record" element={<Record />} />
+          <Route path="/Record" element={<Record />} /> */}
           {/* 민우 경로_작성자 */}
           {/* <Route path="/QuestMy" element={<QuestMy />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />

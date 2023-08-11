@@ -45,6 +45,7 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  // 메뉴 밑줄 관련 ! className 주고 이거 추가
   &.login {
     position: relative;
     border-bottom: 4px solid #000;
