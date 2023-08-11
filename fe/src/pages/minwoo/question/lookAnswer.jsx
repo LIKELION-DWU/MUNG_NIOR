@@ -43,9 +43,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.respond {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -139,17 +146,17 @@ const NextBtn = styled.img`
 const LookAnswer = () => {
   const navigate = useNavigate();
 
-  const LookAnswer = () => {
+  const GoAnswer = () => {
     navigate("/LookAnswer");
   };
-  const Logout = () => {
-    navigate();
+  const GoLogout = () => {
+    navigate("/");
   };
-  const MyPage = () => {
-    navigate("/QuestMy");
+  const GoMyPage = () => {
+    navigate("/QuestionMyPage");
   };
   const GoQuestion = () => {
-    navigate("/");
+    navigate("/Question");
   };
 
   return (
@@ -164,11 +171,11 @@ const LookAnswer = () => {
 
       <MenuContainer>
         <Menu onClick={GoQuestion}>질문하기</Menu>
-        <Menu onClick={LookAnswer} style={{ textDecorationLine: "underline" }}>
+        <Menu onClick={GoAnswer} className="respond">
           답변보기
         </Menu>
-        <Menu>로그아웃</Menu>
-        <Menu onClick={MyPage}>나의 기록</Menu>
+        <Menu onClick={GoLogout}>로그아웃</Menu>
+        <Menu onClick={GoMyPage}>나의 기록</Menu>
       </MenuContainer>
 
       <MainContainer>

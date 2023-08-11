@@ -48,9 +48,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.design {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -163,12 +170,16 @@ const List = () => {
 const Answer = () => {
   const navigate = useNavigate();
 
-  const GoMy = () => {
-    navigate("/ResMy");
+  const GoMyPage = () => {
+    navigate("/RespondMyPage");
   };
 
   const GoAnswer = () => {
     navigate("/Answer");
+  };
+
+  const GoLogout = () => {
+    navigate("/");
   };
 
   return (
@@ -182,11 +193,11 @@ const Answer = () => {
       </Logo>
 
       <MenuContainer>
-        <Menu onClick={GoAnswer} style={{ textDecorationLine: "underline" }}>
+        <Menu onClick={GoAnswer} className="design">
           답변하기
         </Menu>
-        <Menu>로그아웃</Menu>
-        <Menu onClick={GoMy}>나의 기록</Menu>
+        <Menu onClick={GoLogout}>로그아웃</Menu>
+        <Menu onClick={GoMyPage}>나의 기록</Menu>
       </MenuContainer>
 
       <ListContainer>
