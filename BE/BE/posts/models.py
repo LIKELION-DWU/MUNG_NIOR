@@ -33,7 +33,7 @@ class Answer(models.Model):
         limit_choices_to={"user_type": "teacher"},  # teacher 유저 타입만 접근 가능
     )
 
-    comment_id = models.PositiveIntegerField(default=0, editable=False)
+    answer_id = models.PositiveIntegerField(default=0, editable=False)
 
     def __str__(self):
         return self.comment

@@ -5,13 +5,15 @@ User = get_user_model()
 
 
 class StudentSignUpSerializer(serializers.ModelSerializer):
+    student_id = serializers.ReadOnlyField()
+
     class Meta:
         model = User
-        fields = ["id", "username", "phone_number"]
+        fields = ["student_id", "username", "phone_number"]
         extra_kwargs = {
             "username": {"required": True},
             "phone_number": {"required": True},
-            "password": {"write_only": True},
+            # "password": {"write_only": True},
         }
 
     def create(self, validated_data):
@@ -21,9 +23,11 @@ class StudentSignUpSerializer(serializers.ModelSerializer):
 
 
 class TeacherSignUpSerializer(serializers.ModelSerializer):
+    teacher_id = serializers.ReadOnlyField()
+
     class Meta:
         model = User
-        fields = ["id", "username", "email", "phone_number"]
+        fields = ["teacher_id", "username", "email", "phone_number"]
         extra_kwargs = {
             "username": {"required": True},
             "email": {"required": True},
