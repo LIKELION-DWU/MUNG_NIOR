@@ -25,12 +25,17 @@ const Logo = styled.div`
 `;
 
 const MenuContainer = styled.div`
-  position: relative;
-  margin-top: -60px;
+  position: fixed;
+  width: 1020px;
+  height: 85px;
+  padding-top: 40px;
+
+  margin-top: -80px;
   margin-left: 310px;
+  background: rgba(255, 255, 255, 0.78);
 
   line-height: 1;
-  z-index: 999;
+  z-index: 5;
 `;
 
 const Menu = styled.div`
