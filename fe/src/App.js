@@ -45,8 +45,8 @@ function App() {
           {/* 민우 경로_답변자 */}
           {/* <Route path="/Answer" element={<Answer />} />
           <Route path="/ResMy" element={<ResMy />} />
-          // <Route path="/Record" element={<Record />} />
-          {/* 민우 경로_작성자 */}
+          {/* <Route path="/Record" element={<Record />} /> */}
+          {/* 민우경로_작성자 */}
           {/* <Route path="/QuestMy" element={<QuestMy />} />
           <Route path="/LookAnswer" element={<LookAnswer />} />
           <Route path="/" element={<Question />} />

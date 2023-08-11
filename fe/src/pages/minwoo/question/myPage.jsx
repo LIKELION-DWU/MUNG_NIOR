@@ -48,9 +48,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.mypage {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -252,7 +259,7 @@ const QuestMy = () => {
         <Menu onClick={GoQuestion}>질문하기</Menu>
         <Menu onClick={LookAnswer}>답변보기</Menu>
         <Menu>로그아웃</Menu>
-        <Menu onClick={MyPage} style={{ textDecorationLine: "underline" }}>
+        <Menu onClick={MyPage} className="mypage">
           나의 기록
         </Menu>
       </MenuContainer>

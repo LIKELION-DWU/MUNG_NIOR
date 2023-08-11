@@ -44,9 +44,16 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
+  &.design {
+    position: relative;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+  }
+
   &:hover {
     cursor: pointer;
     color: #ff6d2e;
+    border-bottom-color: #ff6d2e;
   }
 `;
 
@@ -159,11 +166,11 @@ const Record = () => {
       </Logo>
 
       <MenuContainer>
-        <Menu onClick={GoAnswer}>답변하기</Menu>
-        <Menu>로그아웃</Menu>
-        <Menu onClick={GoMy} style={{ textDecorationLine: "underline" }}>
-          나의 기록
+        <Menu onClick={GoAnswer} className="design">
+          답변하기
         </Menu>
+        <Menu>로그아웃</Menu>
+        <Menu onClick={GoMy}>나의 기록</Menu>
       </MenuContainer>
 
       <MainContainer>
