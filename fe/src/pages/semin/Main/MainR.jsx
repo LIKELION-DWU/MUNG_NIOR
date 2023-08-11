@@ -200,22 +200,6 @@ const MainR = () => {
     navigate("/RespondMyPage");
   };
 
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await axios.post("http://127.0.0.1:8000/logout/");
-
-  //     if (response.status === 200) {
-  //       alert("로그아웃되었습니다.");
-  //       navigate("/"); // Redirect to the login page after successful logout
-  //     } else {
-  //       alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
-  //     }
-  //   } catch (error) {
-  //     console.error("로그아웃 요청 중 오류 발생:", error);
-  //     alert("로그아웃에 오류가 발생했습니다. 다시 시도해주세요.");
-  //   }
-  // };
-
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -259,7 +243,7 @@ const MainR = () => {
       </Logo>
       <MenuContainer>
         <Menu onClick={gotoAnswer}>답변하기</Menu>
-        <Menu onClick={handleLogout}>로그아웃</Menu>
+        <Menu>로그아웃</Menu>
         <Menu onClick={gotoRespondMyPage}>답변 기록</Menu>
       </MenuContainer>
       <Images>

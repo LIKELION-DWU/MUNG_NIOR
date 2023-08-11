@@ -46,7 +46,6 @@ const Menu = styled.div`
   font-style: normal;
   font-weight: 800;
 
-  // 메뉴 밑줄 관련 ! className 주고 이거 추가
   &.login {
     position: relative;
     border-bottom: 4px solid #000;
@@ -178,7 +177,6 @@ const LoginR = () => {
           }
         );
 
-        // 백엔드로부터의 응답 처리
         if (response.status === 200) {
           alert("로그인에 성공했습니다.");
           gotoMainR();
