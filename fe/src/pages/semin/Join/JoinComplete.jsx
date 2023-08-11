@@ -95,7 +95,7 @@ const JoinComplete = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       gotoLoginQ();
-    }, 3500);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout); // 컴포넌트 언마운트 시 타임아웃 클리어
@@ -126,6 +126,19 @@ const JoinComplete = () => {
           width="200px"
         />
         회원가입 완료
+        <br />
+        <span
+          style={{
+            color: "#fff",
+            fontSize: "30px",
+            fontWeight: "900",
+            fontFamily: "Pretendard",
+            fontStyle: "normal",
+            marginTop: "20px",
+          }}
+        >
+          3초 후에 로그인 창으로 넘어갑니다.
+        </span>
       </Complete>
     </Container>
   );
