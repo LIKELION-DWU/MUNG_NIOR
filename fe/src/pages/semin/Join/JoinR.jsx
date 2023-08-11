@@ -27,7 +27,7 @@ const Logo = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 310px;
 
   line-height: 1;
 `;
@@ -36,12 +36,12 @@ const Menu = styled.div`
   position: relative;
   display: inline-block;
 
-  margin-left: 90px;
+  margin-left: 120px;
 
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 45px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 800;
 
@@ -70,12 +70,11 @@ const InputQ = styled.div`
 
   top: -190px;
   left: 610px;
-  margin-top: 25px;
+  margin-top: 50px;
 `;
 
 const Name = InputQ;
 const Email = InputQ;
-const Password = InputQ;
 const Phone = InputQ;
 
 const Input = styled.input`
@@ -106,12 +105,11 @@ const Input = styled.input`
 
 const NameInput = Input;
 const EmailInput = Input;
-const PasswordInput = Input;
 const PhoneInput = Input;
 
 const Nextbtn = styled.div`
   position: relative;
-  top: -180px;
+  top: -130px;
   left: 1120px;
 
   cursor: pointer;
@@ -129,12 +127,7 @@ const JoinR = () => {
     navigate("/JoinComplete");
   };
   const handleNextBtnClick = () => {
-    if (
-      nameR.trim() === "" ||
-      emailR.trim() === "" ||
-      passwordR.trim() === "" ||
-      phoneR.trim() === ""
-    ) {
+    if (nameR.trim() === "" || emailR.trim() === "" || phoneR.trim() === "") {
       alert("필수 정보를 모두 입력해주세요.");
     } else {
       gotoJoinComplete();
@@ -143,7 +136,6 @@ const JoinR = () => {
 
   const [nameR, setNameR] = useState("");
   const [emailR, setEmailR] = useState("");
-  const [passwordR, setPasswordR] = useState("");
   const [phoneR, setPhoneR] = useState("");
 
   const handleNameR = (event) => {
@@ -151,9 +143,6 @@ const JoinR = () => {
   };
   const handleEmailR = (event) => {
     setEmailR(event.target.value);
-  };
-  const handlePasswordR = (event) => {
-    setPasswordR(event.target.value);
   };
   const handlePhoneR = (event) => {
     setPhoneR(event.target.value);
@@ -260,7 +249,7 @@ const JoinR = () => {
         value={emailR}
         onChange={handleEmailR}
       ></EmailInput>
-      <Password>
+      <Phone>
         <span
           style={{
             color: "#000000",
@@ -281,7 +270,7 @@ const JoinR = () => {
             fontStyle: "normal",
           }}
         >
-          비밀번호
+          전화번호
         </span>
         <span
           style={{
@@ -293,46 +282,6 @@ const JoinR = () => {
           }}
         >
           도 입력해주세요.
-        </span>
-      </Password>
-      <PasswordInput
-        type="password"
-        value={passwordR}
-        onChange={handlePasswordR}
-      ></PasswordInput>
-      <Phone>
-        <span
-          style={{
-            color: "#000000",
-            fontSize: "23px",
-            fontWeight: "700",
-            fontFamily: "Pretendard",
-            fontStyle: "normal",
-          }}
-        >
-          4. 당신의{" "}
-        </span>
-        <span
-          style={{
-            color: "#FF6D2E",
-            fontSize: "23px",
-            fontWeight: "700",
-            fontFamily: "Pretendard",
-            fontStyle: "normal",
-          }}
-        >
-          이메일
-        </span>
-        <span
-          style={{
-            color: "#000000",
-            fontSize: "23px",
-            fontWeight: "700",
-            fontFamily: "Pretendard",
-            fontStyle: "normal",
-          }}
-        >
-          을 입력해주세요.
         </span>
       </Phone>
       <PhoneInput
