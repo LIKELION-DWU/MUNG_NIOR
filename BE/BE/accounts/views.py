@@ -31,9 +31,7 @@ class StudentSignupView(APIView):
 
     def get(self, request):
         students = User.objects.filter(user_type="student")
-        serializer = StudentSignUpSerializer(
-            students, many=True
-        )  # UserSerializer는 적절한 시리얼라이저 이름으로 변경해야 합니다.
+        serializer = StudentSignUpSerializer(students, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -53,9 +51,7 @@ class TeacherSignupView(APIView):
 
     def get(self, request):
         teachers = User.objects.filter(user_type="teacher")
-        serializer = TeacherSignUpSerializer(
-            teachers, many=True
-        )  # UserSerializer는 적절한 시리얼라이저 이름으로 변경해야 합니다.
+        serializer = TeacherSignUpSerializer(teachers, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

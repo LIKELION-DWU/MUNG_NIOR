@@ -11,6 +11,19 @@ class CustomUserManager(BaseUserManager):
 
         user = self.model(user_type=user_type, **extra_fields)
         user.set_password(extra_fields.get("phone_number"))
+
+        # student/teacher id 각각 생성
+        if user.user_type == "student":
+            last_student = (
+                User.objects.filter(user_type="student").order_by("-student_id").first()
+            )
+            user.student_id = (last_student.student_id + 1) if last_student else 1
+        elif user.user_type == "teacher":
+            last_teacher = (
+                User.objects.filter(user_type="teacher").order_by("-teacher_id").first()
+            )
+            user.teacher_id = (last_teacher.teacher_id + 1) if last_teacher else 1
+
         user.save(using=self._db)
         return user
 
@@ -30,6 +43,8 @@ class User(AbstractUser, PermissionsMixin):
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
     email = models.EmailField(unique=True, blank=True, null=True)
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
+    student_id = models.PositiveIntegerField(default=0, editable=False)
+    teacher_id = models.PositiveIntegerField(default=0, editable=False)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
